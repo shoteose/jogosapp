@@ -1,5 +1,5 @@
-CREATE DATABASE jogosdb;
-USE jogosdb;
+CREATE DATABASE jogosapp;
+USE jogosapp;
 
 -- Tabela de Publicadoras
 CREATE TABLE Publicadora (
@@ -22,7 +22,6 @@ CREATE TABLE Genero (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(255) NOT NULL
 );
-
 
 -- Tabela de Relacionamento entre Jogos e Gêneros (M:N)
 CREATE TABLE Jogo_Genero (
