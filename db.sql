@@ -1,3 +1,6 @@
+CREATE DATABASE jogosdb;
+USE jogosdb;
+
 -- Tabela de Publicadoras
 CREATE TABLE Publicadora (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -20,7 +23,7 @@ CREATE TABLE Genero (
     nome VARCHAR(255) NOT NULL
 );
 
-```sql
+
 -- Tabela de Relacionamento entre Jogos e Gêneros (M:N)
 CREATE TABLE Jogo_Genero (
     id_jogo INT,
@@ -65,5 +68,3 @@ INSERT INTO Jogo_Genero (id_jogo, id_genero) VALUES
 (4, 3),  -- Final Fantasy XV é RPG
 (5, 2),  -- The Legend of Zelda: Breath of the Wild é Aventura
 (5, 1);  -- The Legend of Zelda: Breath of the Wild é Ação
-
-```
