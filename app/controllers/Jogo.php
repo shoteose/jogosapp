@@ -24,14 +24,15 @@ class Jogo extends Controller {
   */
   public function get($id = null) {
     if (is_numeric($id)) {
-      $Movies = $this->model('Jogos');
-      $data = $Movies::findJogoById($id);
+      $Jogos = $this->model('Jogos');
+      $data = $Jogos::findJogoById($id);
       $this->view('jogo/get', ['jogos' => $data]);
     } else {
        $this->pageNotFound();
     }
   }
 }
+
 
 // :: Scope Resolution Operator
 // Utilizado para acesso às propriedades e métodos das classes

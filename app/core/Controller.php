@@ -1,6 +1,6 @@
 <?php
 namespace app\core;
-use app\models\Movies;
+use app\models\Jogos;
 
 /**
 * Classe que instancia um model e invoca uma view

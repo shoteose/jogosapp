@@ -50,10 +50,32 @@ class Db {
   public function execQuery(string $sql, array $parameters = []) {
     $stmt = $this->conn->prepare($sql);
     $this->setParameters($stmt, $parameters);
-    $stmt->execute();
-    $response = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    if (!(stripos(trim($sql), 'DELETE') === 0)) {
+      $stmt->execute();
+    }
+
+    if (stripos(trim($sql), 'SELECT') === 0) { 
+        $response = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    } elseif (stripos(trim($sql), 'INSERT') === 0) { 
+        $lastId = $this->conn->insert_id; // ID do registo inserido
+        $result = $this->execQuery('SELECT * FROM jogo WHERE id = ?', ['i', [$lastId]]); 
+        $response = $result[0];
+    } elseif (stripos(trim($sql), 'UPDATE') === 0) { 
+        $response = $parameters[1]; // devolve os dados enviados para o execQuery (não há necessidade de ir buscar à BD)
+    } elseif (stripos(trim($sql), 'DELETE') === 0) {
+        $id = $parameters[1][0]; // id do registo para DELETE
+        $deletedData = $this->execQuery('SELECT * FROM jogo WHERE id = ?', ['i', [$id]]);
+        if (!empty($deletedData)) {
+          $response = $deletedData[0];
+        } else {
+          $response = null;
+        }
+        $stmt->execute();
+    }
+
     return $response;
-  }
+}
+
 
   // *1
   // ... Operador splat
