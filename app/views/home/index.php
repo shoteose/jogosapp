@@ -14,8 +14,8 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <h1>Filmes ECGM</h1>
-          <a href="<?php echo $url_alias;?>/movie">Lista de filmes</a>
+          <h1>Movies ECGM</h1>
+          <a href="./movie">Movies list</a>
         </div>
       </div>
     </div>
