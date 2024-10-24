@@ -3,15 +3,15 @@
 namespace app\models;
 
 use app\core\Db;
-class Movies {
+class Jogos {
   /**
   * Método para obtenção do dataset de todos os filmes
   *
   * @return   array
   */
-  public static function getAllMovies() {
+  public static function getAllJogos() {
     $conn = new Db();
-    $response = $conn->execQuery('SELECT id, title, imdb_rating, release_year FROM movies');
+    $response = $conn->execQuery('SELECT id, nome, ano_lancamento FROM jogo');
     return $response;
   }
 
@@ -21,9 +21,9 @@ class Movies {
   *
   * @return   array
   */
-  public static function findMovieById(int $id) {
+  public static function findJogoById(int $id) {
     $conn = new Db();
-    $response = $conn->execQuery('SELECT id, title, imdb_rating, release_year FROM movies WHERE id = ?', array('i', array($id)));
+    $response = $conn->execQuery('SELECT id, nome, ano_lancamento, id_publicadora FROM jogo WHERE id = ?', array('i', array($id)));
     return $response;
   }
 

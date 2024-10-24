@@ -20,9 +20,9 @@ class Db {
 
   public function __construct() {
     $this->DBServer = 'localhost';
-    $this->DBUser   = 'ecgm';
-    $this->DBPass   = 'nenhuma';
-    $this->DBName   = 'moviesdb';
+    $this->DBUser   = 'root';
+    $this->DBPass   = '';
+    $this->DBName   = 'jogosdb';
     $this->conn = new mysqli($this->DBServer, $this->DBUser, $this->DBPass, $this->DBName);
     $this->conn->set_charset("utf8");
   }

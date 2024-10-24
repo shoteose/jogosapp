@@ -7,7 +7,7 @@ echo count($data['movies']); */
 </pre>
 
 <?php
-if (count($data['movies']) == 0) {
+if (count($data['jogos']) == 0) {
 ?>
   <h1>O filme não existe na nossa base de dados...</h1>
 <?php 
@@ -16,19 +16,19 @@ if (count($data['movies']) == 0) {
 
   <div>
   <?php
-  echo "Nome: " . $data['movies'][0]['title'];
+  echo "Nome: " . $data['jogos'][0]['nome'];
   ?>
   </div>
 
   <div>
   <?php
-  echo "IMDB: " . $data['movies'][0]['imdb_rating'];
+  echo "IMDB: " . $data['jogos'][0]['ano_lancamento'];
   ?>
   </div>
 
   <div>
   <?php
-  echo "Ano: " . $data['movies'][0]['release_year'];
+  echo "Ano: " . $data['jogos'][0]['id_publicadora'];
   ?>
   </div>
 <?php 
