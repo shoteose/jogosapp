@@ -1,5 +1,5 @@
-CREATE DATABASE jogosapp;
-USE jogosapp;
+CREATE DATABASE jogosdb;
+USE jogosdb;
 
 -- Tabela de Publicadoras
 CREATE TABLE Publicadora (
