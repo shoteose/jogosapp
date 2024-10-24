@@ -7,30 +7,25 @@ echo count($data['movies']); */
 </pre>
 
 <?php
-if (count($data['jogos']) == 0) {
+if (count($data['generos']) == 0) {
 ?>
-  <h1>O jogo não existe na nossa base de dados...</h1>
+  <h1>O género não existe na nossa base de dados...</h1>
 <?php 
 } else {
 ?>
 
   <div>
   <?php
-  echo "Nome: " . $data['jogos'][0]['nome'];
+  echo "Nome do género: " . $data['generos'][0]['nome'];
   ?>
   </div>
 
   <div>
   <?php
-  echo "IMDB: " . $data['jogos'][0]['ano_lancamento'];
+  echo "ID do género: " . $data['generos'][0]['id'];
   ?>
   </div>
 
-  <div>
-  <?php
-  echo "Ano: " . $data['jogos'][0]['id_publicadora'];
-  ?>
-  </div>
 <?php 
 }
 ?>

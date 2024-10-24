@@ -1,12 +1,12 @@
 <?php
 use app\core\Controller;
-class Jogo extends Controller {
+class Genero extends Controller {
   /**
   * Invocação da view index.php
   */
   public function index() {
-    $Jogos = $this->model('Jogos'); // é retornado o model Jogos()
-    $data = $Jogos::getAllJogos();
+    $Generos = $this->model('Generos'); // é retornado o model Generos()
+    $data = $Generos::getAllGeneros();
     /*
     $Movies = new Movies();
     $data = $Movies->getAllMovies();
@@ -14,7 +14,7 @@ class Jogo extends Controller {
     $Movies = "Movies";
     $data = $Movies::getAllMovies();
     */
-    $this->view('jogo/index', ['jogos' => $data]);
+    $this->view('genero/index', ['generos' => $data]);
   }
 
   /**
@@ -24,9 +24,9 @@ class Jogo extends Controller {
   */
   public function get($id = null) {
     if (is_numeric($id)) {
-      $Movies = $this->model('Jogos');
-      $data = $Movies::findJogoById($id);
-      $this->view('jogo/get', ['jogos' => $data]);
+      $Generos = $this->model('Generos');
+      $data = $Generos::findGeneroById($id);
+      $this->view('genero/get', ['generos' => $data]);
     } else {
        $this->pageNotFound();
     }

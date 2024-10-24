@@ -16,6 +16,7 @@
         <div class="col">
           <h1>Jogos ECGM</h1>
           <a href="./jogo">Jogos list</a>
+          <a href="./genero">Lista de géneros</a>
         </div>
       </div>
     </div>
