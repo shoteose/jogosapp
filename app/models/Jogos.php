@@ -11,7 +11,12 @@ class Jogos {
   */
   public static function getAllJogos() {
     $conn = new Db();
-    $response = $conn->execQuery('SELECT id, nome, ano_lancamento FROM jogo');
+
+    $query = 'SELECT jogo.id, jogo.nome, GROUP_CONCAT(genero.nome ORDER BY genero.nome SEPARATOR ", ") AS Generos, jogo.ano_lancamento , publicadora.nome AS nome_publicadora FROM jogo JOIN jogo_genero ON jogo.id = jogo_genero.id_jogo JOIN genero ON jogo_genero.id_genero = genero.id JOIN publicadora ON jogo.id_publicadora = publicadora.id GROUP BY jogo.id;';
+
+
+
+    $response = $conn->execQuery($query, []);
     return $response;
   }
 

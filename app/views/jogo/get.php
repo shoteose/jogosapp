@@ -22,13 +22,19 @@ if (count($data['jogos']) == 0) {
 
   <div>
   <?php
-  echo "IMDB: " . $data['jogos'][0]['ano_lancamento'];
+  echo "Género(s): " . $data['jogos'][0]['Generos'];
   ?>
   </div>
 
   <div>
   <?php
-  echo "Ano: " . $data['jogos'][0]['id_publicadora'];
+  echo "Nome da Publicado: " . $data['jogos'][0]['nome_publicadora'];
+  ?>
+  </div>
+
+  <div>
+  <?php
+  echo "Ano de Lançamento: " . $data['jogos'][0]['ano_lancamento'];
   ?>
   </div>
 <?php 
