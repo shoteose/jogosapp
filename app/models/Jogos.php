@@ -28,7 +28,26 @@ class Jogos {
   */
   public static function findJogoById(int $id) {
     $conn = new Db();
-    $response = $conn->execQuery('SELECT id, nome, ano_lancamento, id_publicadora FROM jogo WHERE id = ?', array('i', array($id)));
+    $response = $conn->execQuery('SELECT 
+    Jogo.id AS jogo_id,
+    Jogo.nome AS jogo_nome,
+    Jogo.ano_lancamento,
+    Publicadora.nome AS publicadora_nome,
+    Publicadora.pais AS publicadora_pais,
+    GROUP_CONCAT(Genero.nome SEPARATOR ", ") AS generos
+FROM 
+    Jogo
+JOIN 
+    Publicadora ON Jogo.id_publicadora = Publicadora.id
+JOIN 
+    Jogo_Genero ON Jogo.id = Jogo_Genero.id_jogo
+JOIN 
+    Genero ON Jogo_Genero.id_genero = Genero.id
+WHERE 
+    Jogo.id = ?
+GROUP BY 
+    Jogo.id, Jogo.nome, Jogo.ano_lancamento, Publicadora.nome, Publicadora.pais;
+', array('i', array($id)));
     return $response;
   }
 

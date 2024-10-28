@@ -23,6 +23,7 @@
             <th>Nome</th>
             <th>Ano de Lançamento</th>
             <th>Publicadora</th>
+            <th>Género(s)</th>
             <th>Detalhes</th>
           </tr>
         </thead>
@@ -33,7 +34,8 @@
             echo "<td>" . $jogo['id'] . "</td>";
             echo "<td>" . $jogo['nome'] . "</td>";
             echo "<td>" . $jogo['ano_lancamento'] . "</td>";
-            echo "<td>Por fazer...</td>";
+            echo "<td>" . $jogo['nome_publicadora']."</td>";
+            echo "<td>" . $jogo['Generos']."</td>";
             echo "<td><a href='./jogo/get/" . $jogo['id'] . "' class='text-light'><img class='icon' src='assets/olho.png'></a></td>";
             echo "</tr>";
           }
