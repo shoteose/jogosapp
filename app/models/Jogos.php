@@ -3,16 +3,28 @@
 namespace app\models;
 
 use app\core\Db;
-class Jogos {
+
+class Jogos
+{
   /**
-  * Método para obtenção do dataset de todos os filmes
-  *
-  * @return   array
-  */
-  public static function getAllJogos() {
+   * Método para obtenção do dataset de todos os filmes
+   *
+   * @return   array
+   */
+  public static function getAllJogos()
+  {
     $conn = new Db();
 
-    $query = 'SELECT jogo.id, jogo.nome, GROUP_CONCAT(genero.nome ORDER BY genero.nome SEPARATOR ", ") AS Generos, jogo.ano_lancamento , publicadora.nome AS nome_publicadora FROM jogo JOIN jogo_genero ON jogo.id = jogo_genero.id_jogo JOIN genero ON jogo_genero.id_genero = genero.id JOIN publicadora ON jogo.id_publicadora = publicadora.id GROUP BY jogo.id;';
+    $query = 'SELECT jogo.id, jogo.nome, 
+       GROUP_CONCAT(genero.nome ORDER BY genero.nome SEPARATOR ", ") AS Generos, 
+       jogo.caminho_imagem, jogo.ano_lancamento, 
+       publicadora.nome AS nome_publicadora 
+       FROM jogo 
+       LEFT JOIN jogo_genero ON jogo.id = jogo_genero.id_jogo 
+       LEFT JOIN genero ON jogo_genero.id_genero = genero.id 
+       JOIN publicadora ON jogo.id_publicadora = publicadora.id 
+       GROUP BY jogo.id;
+';
 
 
 
@@ -21,12 +33,13 @@ class Jogos {
   }
 
   /**
-  * Método para a obtenção de um filme pelo id correspondente
-  * @param    int     $id   Id. do filme
-  *
-  * @return   array
-  */
-  public static function findJogoById(int $id) {
+   * Método para a obtenção de um filme pelo id correspondente
+   * @param    int     $id   Id. do filme
+   *
+   * @return   array
+   */
+  public static function findJogoById(int $id)
+  {
     $conn = new Db();
     $response = $conn->execQuery('SELECT 
     Jogo.id AS jogo_id,
@@ -51,4 +64,14 @@ GROUP BY
     return $response;
   }
 
+
+  public static function addJogo($data)
+  {
+    $conn = new Db();
+    $response = $conn->execQuery('INSERT INTO jogo (nome, ano_lancamento, id_publicadora, caminho_imagem) VALUES (?, ?, ?, ?)', array(
+      'ssis',
+      array($data['nome'], $data['ano_lancamento'], $data['id_publicadora'], $data['caminho_imagem'])
+    ));
+    return $response;
+  }
 }

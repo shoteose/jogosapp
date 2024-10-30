@@ -15,35 +15,55 @@
   <div class="container my-5">
     <h1 class="text-center mb-4">Listagem de Jogos</h1>
 
-    <div class="table-responsive">
-      <table class="table table-info table-striped w-75 mx-auto">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Nome</th>
-            <th>Ano de Lançamento</th>
-            <th>Publicadora</th>
-            <th>Género(s)</th>
-            <th>Detalhes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php 
+    <div class="album py-5 bg-light">
+      <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+          <?php
           foreach ($data['jogos'] as $jogo) {
-            echo "<tr>";
-            echo "<td>" . $jogo['id'] . "</td>";
-            echo "<td>" . $jogo['nome'] . "</td>";
-            echo "<td>" . $jogo['ano_lancamento'] . "</td>";
-            echo "<td>" . $jogo['nome_publicadora']."</td>";
-            echo "<td>" . $jogo['Generos']."</td>";
-            echo "<td><a href='./jogo/get/" . $jogo['id'] . "' class='text-light'><img class='icon' src='assets/olho.png'></a></td>";
-            echo "</tr>";
+            echo '<div class="col">';
+            echo '<div class="card shadow-sm h-100">';
+
+            // imagem
+            echo '<div style="height: 225px; display: flex; align-items: center; justify-content: center; overflow: hidden;">';
+            echo '<img src="assets/logos/' . $jogo['caminho_imagem'] . '" class="img-fluid" style="max-height: 100%; max-width: 100%;" alt="Imagem de ' . $jogo['nome'] . '">';
+            echo '</div>';
+
+            // detalhes do jogo
+            echo '<div class="card-body">';
+            echo '<h5 class="card-title">' . $jogo['nome'] . '</h5>';
+            echo '<p class="card-text"><strong>Ano de Lançamento:</strong> ' . $jogo['ano_lancamento'] . '</p>';
+            echo '<p class="card-text"><strong>Publicadora:</strong> ' . $jogo['nome_publicadora'] . '</p>';
+            echo '<p class="card-text"><strong>Gêneros:</strong> ' . $jogo['Generos'] . '</p>';
+
+            // ver mais ou eliminar
+            echo '<div class="mt-auto d-flex justify-content-between align-items-center">';
+            echo '<a href="./jogo/get/' . $jogo['id'] . '" class="btn btn-sm btn-outline-secondary">Ver detalhes</a>';
+            echo '<a href="./jogo/delete/' . $jogo['id'] . '" class="btn btn-sm btn-outline-danger">Delete</a>';
+            echo '</div>';
+
+            echo '</div>'; // Fechando card-body
+            echo '</div>'; // Fechando card
+            echo '</div>'; // Fechando col-md-4
           }
           ?>
-        </tbody>
-      </table>
+
+          <div class="col">
+            <div class="card shadow-sm h-100 d-flex align-items-center justify-content-center text-center">
+              <div class="card-body">
+              <a href="<?php echo $url_alias;?>/jogo/create" class="btn btn-sm btn-outline-success">Adicionar Jogo</a>
+                </a>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
     </div>
   </div>
+
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNgyH6KEfElwpcl5EiyJ3jShkn1AM2YuDhCfwfBBDFqz9EufPDA6wH8LusnaGG+"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhG81r6Qq8ZTfC2m5K68K2a8a6w5VjE55rHRFVLM7xk3I6ABe9I1F2BY9HBr"></script>

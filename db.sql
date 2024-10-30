@@ -14,6 +14,7 @@ CREATE TABLE Jogo (
     nome VARCHAR(255) NOT NULL,
     ano_lancamento INT,
     id_publicadora INT,
+    caminho_imagem VARCHAR(255),
     FOREIGN KEY (id_publicadora) REFERENCES Publicadora(id)
 );
 

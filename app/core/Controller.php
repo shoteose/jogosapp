@@ -27,6 +27,11 @@ class Controller {
   * @param  array   $data   Dados a exibir na view
   */
   public function view(string $view, $data = []) {
+    $url_alias = '/jogosapp';
+    require 'app/views/' . $view . '.php';
+  }
+
+  public function viewDouble(string $view, $data = []) {
     require 'app/views/' . $view . '.php';
   }
 
