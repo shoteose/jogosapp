@@ -48,29 +48,85 @@ class Jogos
     Publicadora.nome AS publicadora_nome,
     Publicadora.pais AS publicadora_pais,
     GROUP_CONCAT(Genero.nome SEPARATOR ", ") AS generos
-FROM 
-    Jogo
-JOIN 
-    Publicadora ON Jogo.id_publicadora = Publicadora.id
-JOIN 
-    Jogo_Genero ON Jogo.id = Jogo_Genero.id_jogo
-JOIN 
-    Genero ON Jogo_Genero.id_genero = Genero.id
-WHERE 
-    Jogo.id = ?
-GROUP BY 
+    FROM 
+        Jogo
+    LEFT JOIN 
+        Publicadora ON Jogo.id_publicadora = Publicadora.id
+    LEFT JOIN 
+        Jogo_Genero ON Jogo.id = Jogo_Genero.id_jogo
+    LEFT JOIN 
+        Genero ON Jogo_Genero.id_genero = Genero.id
+    WHERE 
+        Jogo.id = ?
+    GROUP BY 
     Jogo.id, Jogo.nome, Jogo.ano_lancamento, Publicadora.nome, Publicadora.pais;
-', array('i', array($id)));
+    ', array('i', array($id)));
     return $response;
   }
-
 
   public static function addJogo($data)
   {
     $conn = new Db();
+
+    var_dump($data); // Verifica os dados recebidos
+
+
     $response = $conn->execQuery('INSERT INTO jogo (nome, ano_lancamento, id_publicadora, caminho_imagem) VALUES (?, ?, ?, ?)', array(
       'ssis',
       array($data['nome'], $data['ano_lancamento'], $data['id_publicadora'], $data['caminho_imagem'])
+    ));
+
+    var_dump($response); // Verifica o retorno da inserção
+
+
+    $resultado = $conn->execQuery('SELECT id FROM jogo WHERE nome = ? AND ano_lancamento = ?', array(
+      'si',
+      array($data['nome'], $data['ano_lancamento'])
+    ));
+    $jogoId = $resultado[0]['id'];
+
+    var_dump($resultado); // Verifica se o ID foi encontrado
+
+if (empty($result)) {
+    echo "ID não encontrado!";
+} else {
+    $jogoId = $result[0]['id'];
+    var_dump($jogoId); // Verifica o ID do jogo
+}
+
+    foreach ($data['id_generos'] as $generoId) {
+      $conn->execQuery('INSERT INTO jogo_genero (id_jogo, id_genero) VALUES (?, ?)', array(
+        'ii',
+        array($jogoId, $generoId)
+      ));
+    }
+
+    return $response;
+  }
+
+
+
+  public static function deleteJogo($id)
+  {
+    $conn = new Db();
+
+    $jogo = $conn->execQuery('SELECT caminho_imagem FROM jogo WHERE id = ?', array(
+      'i',
+      array($id)
+    ));
+
+    if (!empty($jogo) && file_exists('assets/logos/' . $jogo[0]['caminho_imagem'])) {
+
+      unlink('assets/logos/' . $jogo[0]['caminho_imagem']);
+    }
+
+    $conn->execQuery('DELETE FROM jogo_genero WHERE id_jogo = ?', array(
+      'i',
+      array($id)
+    ));
+    $response = $conn->execQuery('DELETE FROM jogo WHERE id = ?', array(
+      'i',
+      array($id)
     ));
     return $response;
   }

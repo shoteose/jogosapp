@@ -37,63 +37,61 @@ class Jogo extends Controller
     }
   }
 
-  public function debug_to_console($data) {
+  public function debug_to_console($data)
+  {
     $output = $data;
     if (is_array($output))
-        $output = implode(',', $output);
+      $output = implode(',', $output);
 
     echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
-}
+  }
 
-public function create() {
-  $Jogos = $this->model('Jogos');
-  $Generos = $this->model('Generos');
-  $Publicadoras = $this->model('Publicadoras');
+  public function create()
+  {
+    $Jogos = $this->model('Jogos');
+    $Generos = $this->model('Generos');
+    $Publicadoras = $this->model('Publicadoras');
 
-  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       if (isset($_FILES['caminho_imagem']) && $_FILES['caminho_imagem']['error'] === UPLOAD_ERR_OK) {
-          $imagem_nome = $_FILES['caminho_imagem']['name'];
-          $imagem_tmp = $_FILES['caminho_imagem']['tmp_name'];
-          $destino = 'assets/logos/' . $imagem_nome;
-          
-          if (move_uploaded_file($imagem_tmp, $destino)) {
-              $novoJogo = [
-                  'nome' => $_POST['nome'],
-                  'ano_lancamento' => $_POST['ano_lancamento'],
-                  'id_publicadora' => $_POST['id_publicadora'],
-                  'caminho_imagem' => $imagem_nome,
-              ];
-              
-              $info = $Jogos::addJogo($novoJogo);
-              $data = $Jogos::getAllJogos();
-              header("Location: /jogosapp/jogo");
-exit();
+        $imagem_nome = $_FILES['caminho_imagem']['name'];
+        $imagem_tmp = $_FILES['caminho_imagem']['tmp_name'];
+        $destino = 'assets/logos/' . $imagem_nome;
 
-          } else {
-              echo "Erro ao mover a imagem para a pasta destino.";
-          }
-      } else {
-          echo "Erro no upload da imagem ou arquivo não enviado.";
+        if (move_uploaded_file($imagem_tmp, $destino)) {
+          $novoJogo = [
+            'nome' => $_POST['nome'],
+            'ano_lancamento' => $_POST['ano_lancamento'],
+            'id_publicadora' => $_POST['id_publicadora'],
+            'caminho_imagem' => $imagem_nome,
+            'id_generos' => $_POST['id_generos']
+          ];
+
+          $info = $Jogos::addJogo($novoJogo);
+          $data = $Jogos::getAllJogos();
+          header("Location: /jogosapp/jogo");
+          exit();
+        }
       }
-
-  } else {
+    } else {
       $generos = $Generos::getAllGeneros();
       $publicadoras = $Publicadoras::getAllPublicadoras();
-      $this->view('jogo/create', ['publicadoras'=> $publicadoras]);
+      $this->view('jogo/create', ['publicadoras' => $publicadoras, 'generos' => $generos]);
+    }
   }
-}
 
 
-  function delete($id = null){
+  function delete($id = null)
+  {
     if (is_numeric($id)) {
       $Jogos = $this->model('Jogos');
-      $data = $Jogos::getAllJogos($id);
-      $this->view('jogo/index', ['jogos' => $data]);
+      $data = $Jogos::deleteJogo($id);
+      header("Location: /jogosapp/jogo");
+      exit();
     } else {
       $this->pageNotFound();
     }
-
   }
 }
 

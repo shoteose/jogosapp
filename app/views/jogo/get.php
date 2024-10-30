@@ -47,6 +47,7 @@ if (count($data['jogos']) == 0) {
 }
 ?>
 
+<a href="<?php echo $url_alias;?>/jogo">Voltar</a>
 
 <?php
 /* echo "<ul>";
