@@ -1,0 +1,110 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+}
+
+table {
+  margin: 0 auto;
+  color: white;
+}
+
+.icon {
+  width: 10%;
+  height: 10%;
+}
+
+#adicionar {
+  width: 10%;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+#index {
+  background-color: black;
+}
+
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #6a11cb;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(
+    to right,
+    rgba(203, 17, 17, 0.9),
+    rgba(252, 177, 37, 0.9)
+  );
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(
+    to right,
+    rgba(203, 17, 17, 0.9),
+    rgba(252, 177, 37, 0.9)
+  );
+}
+
+* {
+  font-family: "Pixelify Sans", serif;
+}
+
+#logotipo {
+  font-size: 30px;
+}
+
+.nav-link,
+#logotipo {
+  color: white !important;
+}
+
+.nav-link:hover {
+  color: blue !important;
+}
+
+.nav-link {
+  -webkit-transition: color 0.5s ease-out;
+  -moz-transition: color 0.5s ease-out;
+  -o-transition: color 0.5s ease-out;
+  transition: color 0.5s ease-out;
+}
+
+.text-games {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Altura da tela inteira */
+}
+
+.line-1 {
+  position: relative;
+  width: 9ch;
+  border-right: 2px solid rgba(255, 255, 255, 0.75);
+  font-size: 140px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.anim-typewriter {
+  animation: typewriter 0.7s steps(44) 1s 1 normal both,
+    blinkTextCursor 500ms steps(44) infinite normal;
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 9ch;
+  }
+}
+
+@keyframes blinkTextCursor {
+  from {
+    border-right-color: white;
+  }
+  to {
+    border-right-color: black;
+  }
+}
