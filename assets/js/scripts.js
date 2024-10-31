@@ -10,6 +10,14 @@ if (modalEliminar) {
     });
 }
 
+    // Função para detectar o fim da animação
+    document.addEventListener("DOMContentLoaded", function() {
+        const title = document.getElementById('tituloIndex');
+        title.addEventListener("animationend", function() {
+          document.getElementById('botoes').classList.add('supriseModaFoca');
+        });
+      });
+
 function deleteGame() {
     // Existe algum id? Se sim elimina
     if (jogoId) {

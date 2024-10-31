@@ -11,12 +11,7 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css">
   <title>Jogos App</title>
-  <style>
-    .btn-custom {
-      width: 150px; /* largura fixa para ambos os botões */
-      margin-bottom: 10px; /* espaço entre os botões */
-    }
-  </style>
+
 </head>
 
 <body id="index">
@@ -24,10 +19,10 @@
   <div class="container text-games text-center">
     <div class="row">
       <div class="col-12">
-        <p class="line-1 anim-typewriter">GamesList</p>
+        <p class="line-1 anim-typewriter" id="tituloIndex">GamesList</p>
       </div>
     </div>
-    <div style="margin:5px;"class="row mt-3">
+    <div class="row mt-3" id="botoes">
       <div class="col-12 d-flex flex-column align-items-center">
         <a href="<?php echo $url_alias;?>/jogo" class="btn btn-info btn-sm btn-custom">Ver jogos</a>
         <a href="<?php echo $url_alias;?>/genero" class="btn btn-info btn-sm btn-custom">Ver Gêneros</a>
@@ -35,6 +30,9 @@
     </div>
   </div>  
 
+
+  <script src="assets/js/scripts.js"></script>
+ 
   <!-- Optional JavaScript; choose one of the two! -->
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
