@@ -11,8 +11,7 @@ class Jogos
    *
    * @return   array
    */
-  public static function getAllJogos()
-  {
+  public static function getAllJogos(){
     $conn = new Db();
 
     $query = 'SELECT jogo.id, jogo.nome, 
@@ -38,6 +37,29 @@ class Jogos
    *
    * @return   array
    */
+
+  public static function getAllJogosByGeneroId(int $id){
+
+    $conn = new Db();
+
+    $query = 'SELECT jogo.id, jogo.nome, 
+        genero.nome AS generos, 
+        jogo.caminho_imagem, jogo.ano_lancamento, 
+        publicadora.nome AS nome_publicadora 
+        FROM jogo 
+        LEFT JOIN jogo_genero ON jogo.id = jogo_genero.id_jogo 
+        LEFT JOIN genero ON jogo_genero.id_genero = genero.id 
+        JOIN publicadora ON jogo.id_publicadora = publicadora.id 
+        WHERE genero.id = ' . $id . ' GROUP BY jogo.id;
+    ';
+
+
+
+    $response = $conn->execQuery($query, []);
+    return $response;
+
+  }
+
   public static function findJogoById(int $id)
   {
     $conn = new Db();
@@ -64,20 +86,13 @@ class Jogos
     return $response;
   }
 
-  public static function addJogo($data)
-  {
+  public static function addJogo($data){
     $conn = new Db();
-
-    var_dump($data); // Verifica os dados recebidos
-
 
     $response = $conn->execQuery('INSERT INTO jogo (nome, ano_lancamento, id_publicadora, caminho_imagem) VALUES (?, ?, ?, ?)', array(
       'ssis',
       array($data['nome'], $data['ano_lancamento'], $data['id_publicadora'], $data['caminho_imagem'])
     ));
-
-    var_dump($response); // Verifica o retorno da inserção
-
 
     $resultado = $conn->execQuery('SELECT id FROM jogo WHERE nome = ? AND ano_lancamento = ?', array(
       'si',
@@ -85,14 +100,11 @@ class Jogos
     ));
     $jogoId = $resultado[0]['id'];
 
-    var_dump($resultado); // Verifica se o ID foi encontrado
-
-if (empty($result)) {
-    echo "ID não encontrado!";
-} else {
-    $jogoId = $result[0]['id'];
-    var_dump($jogoId); // Verifica o ID do jogo
-}
+    if (empty($result)) {
+        echo "ID não encontrado!";
+    } else {
+        $jogoId = $result[0]['id'];
+    }
 
     foreach ($data['id_generos'] as $generoId) {
       $conn->execQuery('INSERT INTO jogo_genero (id_jogo, id_genero) VALUES (?, ?)', array(

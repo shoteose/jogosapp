@@ -25,8 +25,11 @@ class Genero extends Controller {
   public function get($id = null) {
     if (is_numeric($id)) {
       $Generos = $this->model('Generos');
+      $Jogos = $this->model('Jogos');
       $data = $Generos::findGeneroById($id);
-      $this->view('genero/get', ['generos' => $data]);
+      $jogos = $Jogos::getAllJogosByGeneroId($id);
+     // $data2 = $Jogos::getAllJogos();
+      $this->view('genero/get', ['generos' => $data,'jogos' => $jogos]);
     } else {
        $this->pageNotFound();
     }
