@@ -15,9 +15,11 @@
   <div class="container my-5">
     <h1 class="text-center mb-4">Listagem de Jogos</h1>
 
-    <div class="album py-5 bg-light">
+    <div class="album">
       <div class="container">
-
+        <div class ="row">
+          <a href="<?php echo $url_alias;?>/jogo/create" id="adicionar" class="btn btn-success btn-sm btn-md mb-3">Adicionar Jogo</a>
+        </div>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
           <?php
@@ -48,17 +50,6 @@
             echo '</div>'; // Fechando col-md-4
           }
           ?>
-
-          <div class="col">
-            <div class="card shadow-sm h-100 d-flex align-items-center justify-content-center text-center">
-              <div class="card-body">
-              <a href="<?php echo $url_alias;?>/jogo/create" class="btn btn-sm btn-outline-success">Adicionar Jogo</a>
-                </a>
-              </div>
-            </div>
-          </div>
-
-
         </div>
       </div>
     </div>
