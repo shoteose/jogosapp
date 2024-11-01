@@ -37,7 +37,6 @@ class Jogo extends Controller
     }
   }
 
-
   public function create()
   {
     $Jogos = $this->model('Jogos');
@@ -74,7 +73,7 @@ class Jogo extends Controller
   }
 
 
-  function delete($id = null)
+  public function delete($id = null)
   {
     if (is_numeric($id)) {
       $Jogos = $this->model('Jogos');

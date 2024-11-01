@@ -1,10 +1,14 @@
 <?php
+
 use app\core\Controller;
-class Genero extends Controller {
+
+class Genero extends Controller
+{
   /**
-  * Invocação da view index.php
-  */
-  public function index() {
+   * Invocação da view index.php
+   */
+  public function index()
+  {
     $Generos = $this->model('Generos'); // é retornado o model Generos()
     $data = $Generos::getAllGeneros();
     /*
@@ -18,24 +22,57 @@ class Genero extends Controller {
   }
 
   /**
-  * Invocação da view get.php
-  *
-  * @param  int   $id   Id. movie
-  */
-  public function get($id = null) {
+   * Invocação da view get.php
+   *
+   * @param  int   $id   Id. movie
+   */
+  public function get($id = null)
+  {
     if (is_numeric($id)) {
       $Generos = $this->model('Generos');
       $Jogos = $this->model('Jogos');
       $data = $Generos::findGeneroById($id);
       $jogos = $Jogos::getAllJogosByGeneroId($id);
-     // $data2 = $Jogos::getAllJogos();
-      $this->view('genero/get', ['generos' => $data,'jogos' => $jogos]);
+      // $data2 = $Jogos::getAllJogos();
+      $this->view('genero/get', ['generos' => $data, 'jogos' => $jogos]);
     } else {
-       $this->pageNotFound();
+      $this->pageNotFound();
+    }
+  }
+
+  public function create()
+  {
+    $Generos = $this->model('Generos');
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+      $novoGenero=[
+        'nome' => $_POST['nome']
+      ];
+
+      $info = $Generos::addGenero($novoGenero);
+
+      header("Location: /jogosapp/genero");
+      exit();
+    }else{
+
+      $this->view('genero/create', ['generos' => $Generos]);
+    }
+  }
+
+
+  public function delete($id = null)
+  {
+    if (is_numeric($id)) {
+      $Generos = $this->model('Generos');
+      $data = $Generos::deleteGenero($id);
+      header("Location: /jogosapp/genero");
+      exit();
+    } else {
+      $this->pageNotFound();
     }
   }
 }
 
 // :: Scope Resolution Operator
 // Utilizado para acesso às propriedades e métodos das classes
-?>

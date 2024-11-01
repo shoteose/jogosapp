@@ -22,17 +22,14 @@
                         <h2 class="text-center">Criar Novo Jogo</h2>
                         <form action="<?php echo $url_alias; ?>/jogo/create" method="POST" enctype="multipart/form-data">
 
-                            <!-- Nome do Jogo -->
                             <div class="col-md-12 mb-3">
                                 <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome do Jogo">
                             </div>
 
-                            <!-- Ano de Lançamento -->
                             <div class="col-md-12 mb-3">
                                 <input class="form-control" type="number" id="ano_lancamento" name="ano_lancamento" placeholder="Ano de Lançamento">
                             </div>
 
-                            <!-- Publicadora -->
                             <div class="col-md-12 mb-3">
                                 <select class="form-select" id="id_publicadora" name="id_publicadora">
                                     <option selected disabled value="">Publicadora</option>
@@ -42,7 +39,6 @@
                                 </select>
                             </div>
 
-                            <!-- Gêneros -->
                             <div class="col-md-12 mb-3">
                                 <select class="form-select choices-multiple" id="id_generos" name="id_generos[]" multiple>
                                     <?php foreach ($data['generos'] as $genero) { ?>
@@ -51,12 +47,10 @@
                                 </select>
                             </div>
 
-                            <!-- Imagem -->
                             <div class="col-md-12 mb-3">
                                 <input class="form-control" type="file" id="caminho_imagem" name="caminho_imagem" accept="image/*">
                             </div>
 
-                            <!-- Botões -->
                             <div class="form-button mt-3 text-center">
                                 <button type="submit" class="btn btn-primary">Criar Jogo</button>
                                 <a href="<?php echo $url_alias; ?>/jogo" class="btn btn-secondary">Voltar</a>

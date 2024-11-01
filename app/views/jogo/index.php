@@ -16,16 +16,22 @@
   <div class="container my-5">
     <h1 class="text-center mb-4">Listagem de Jogos</h1>
 
+    <!-- barra de pesdquisa por nome -->
+    <div class="mb-3">
+      <input type="text" id="searchBar" class="form-control" placeholder="Pesquisar jogos pelo nome...">
+    </div>
+
     <div class="album">
       <div class="container">
-        <div class ="row">
-          <a href="<?php echo $url_alias;?>/jogo/create" id="adicionar" class="btn btn-success btn-sm btn-md mb-3">Adicionar Jogo</a>
+        <div class="d-flex justify-content-between mb-3">
+          <a href="<?php echo $url_alias; ?>" class="btn btn-secondary btn-sm">Voltar</a>
+          <a href="<?php echo $url_alias; ?>/jogo/create" class="btn btn-success btn-sm">Adicionar Jogo</a>
         </div>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="jogosList">
           <?php
           foreach ($data['jogos'] as $jogo) {
-            echo '<div class="col">';
+            echo '<div class="col jogo-item">';
             echo '<div class="card shadow-sm h-100">';
 
             echo '<div style="height: 225px; display: flex; align-items: center; justify-content: center; overflow: hidden;">';
@@ -33,7 +39,7 @@
             echo '</div>';
 
             echo '<div class="card-body">';
-            echo '<h5 class="card-title">' . $jogo['nome'] . '</h5>';
+            echo '<h5 class="card-title jogo-nome">' . $jogo['nome'] . '</h5>';
             echo '<p class="card-text"><strong>Ano de Lançamento:</strong> ' . $jogo['ano_lancamento'] . '</p>';
             echo '<p class="card-text"><strong>Publicadora:</strong> ' . $jogo['nome_publicadora'] . '</p>';
             echo '<p class="card-text"><strong>Gêneros:</strong> ' . $jogo['Generos'] . '</p>';
@@ -43,9 +49,9 @@
             echo '<a class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalEliminar" data-id="' . $jogo['id'] . '">Delete</a>';
             echo '</div>';
 
-            echo '</div>'; 
-            echo '</div>'; 
-            echo '</div>'; 
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
           }
           ?>
         </div>
@@ -58,7 +64,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalEliminarLabel">Confirmar Exclusão</h5>
+          <h5 class="modal-title" id="modalEliminarLabel">Confirmar Eliminação</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -75,7 +81,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNgyH6KEfElwpcl5EiyJ3jShkn1AM2YuDhCfwfBBDFqz9EufPDA6wH8LusnaGG+"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhG81r6Qq8ZTfC2m5K68K2a8a6w5VjE55rHRFVLM7xk3I6ABe9I1F2BY9HBr"></script>
   <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-  <script src="/JOGOSAPP/assets/js/scripts.js"></script>
+  <script src="assets/js/scripts.js"></script>
 </body>
 
 </html>

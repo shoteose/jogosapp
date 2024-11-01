@@ -22,6 +22,10 @@
       </div>
     <?php } ?>
 
+    <div class="d-flex justify-content-between mb-3">
+    <a href="<?php echo $url_alias; ?>/genero" class="btn btn-secondary btn-sm">Voltar</a>
+    </div>
+
     <div class="album py-3 bg-light">
       <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
