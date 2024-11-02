@@ -7,6 +7,11 @@ class Home extends Controller {
     $this->view('home/index');
   }
 
+public function criadores(){
+
+  $this->view('home/criadores');
+}
+
 }
 
 ?>
