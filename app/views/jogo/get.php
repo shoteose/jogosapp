@@ -21,7 +21,7 @@
       <div class="col-md-6">
         <div class="form-holder">
           <div class="form-content p-4">
-            <div class="form-items shadow-lg bg-light mx-auto px-2">
+            <div class="form-items bg-dark shadow-lg mx-auto px-2 pt-3 rounded">
               <h1 class="fw-bold text-center"><?php echo $data['jogos'][0]['jogo_nome'] ?></h1>
               <form action="<?php echo $url_alias; ?>/jogo/create" method="POST" enctype="multipart/form-data">
                 <div class="col-md-12 mb-3">
@@ -48,7 +48,7 @@
                   <p><?php echo $data['jogos'][0]['generos'] ?></p>
                 </div>
 
-                <div class="form-button mt-3 text-center">
+                <div class="form-button pb-3 text-center">
                   <a href="<?php echo $url_alias; ?>/jogo" class="btn btn-danger">Voltar</a>
                 </div>
               </form>

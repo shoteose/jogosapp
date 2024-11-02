@@ -32,7 +32,7 @@
           <?php
           foreach ($data['jogos'] as $jogo) {
             echo '<div class="col jogo-item">';
-            echo '<div class="card shadow-sm h-100">';
+            echo '<div class="card bg-dark shadow-sm h-100">';
 
             echo '<div style="height: 225px; display: flex; align-items: center; justify-content: center; overflow: hidden;">';
             echo '<img src="assets/logos/' . $jogo['caminho_imagem'] . '" class="img-fluid" style="max-height: 100%; max-width: 100%;" alt="Imagem de ' . $jogo['nome'] . '">';

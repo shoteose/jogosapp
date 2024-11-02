@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Listagem de Gêneros</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -23,7 +23,7 @@
 
     <div class="list-group">
       <?php foreach ($data['generos'] as $genero) { ?>
-        <div class="list-group-item d-flex justify-content-between align-items-center">
+        <div class="bg-dark list-group-item d-flex justify-content-between align-items-center">
           <span><?php echo $genero['nome']; ?></span>
           <div>
             <a href="./genero/get/<?php echo $genero['id']; ?>" class="btn btn-sm btn-outline-secondary me-2">Ver Jogos com este Gênero</a>
