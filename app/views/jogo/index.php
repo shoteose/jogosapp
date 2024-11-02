@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Listagem de Jogos</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -24,7 +24,7 @@
     <div class="album">
       <div class="container">
         <div class="d-flex justify-content-between mb-3">
-          <a href="<?php echo $url_alias; ?>" class="btn btn-secondary btn-sm">Voltar</a>
+          <a href="<?php echo $url_alias; ?>/" class="btn btn-secondary btn-sm">Voltar</a>
           <a href="<?php echo $url_alias; ?>/jogo/create" class="btn btn-success btn-sm">Adicionar Jogo</a>
         </div>
 
@@ -39,14 +39,11 @@
             echo '</div>';
 
             echo '<div class="card-body">';
-            echo '<h5 class="card-title jogo-nome">' . $jogo['nome'] . '</h5>';
-            echo '<p class="card-text"><strong>Ano de Lançamento:</strong> ' . $jogo['ano_lancamento'] . '</p>';
-            echo '<p class="card-text"><strong>Publicadora:</strong> ' . $jogo['nome_publicadora'] . '</p>';
-            echo '<p class="card-text"><strong>Gêneros:</strong> ' . $jogo['Generos'] . '</p>';
+            echo '<h5 class="card-title jogo-nome mb-3">' . $jogo['nome'] . '</h5>';
 
             echo '<div class="mt-auto d-flex justify-content-between align-items-center">';
             echo '<a href="./jogo/get/' . $jogo['id'] . '" class="btn btn-sm btn-outline-secondary">Ver detalhes</a>';
-            echo '<a class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalEliminar" data-id="' . $jogo['id'] . '">Delete</a>';
+            echo '<a class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalEliminar" data-id="' . $jogo['id'] . '">Apagar jogo</a>';
             echo '</div>';
 
             echo '</div>';

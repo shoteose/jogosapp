@@ -67,6 +67,7 @@ class Jogos
     Jogo.id AS jogo_id,
     Jogo.nome AS jogo_nome,
     Jogo.ano_lancamento,
+    Jogo.caminho_imagem,
     Publicadora.nome AS publicadora_nome,
     Publicadora.pais AS publicadora_pais,
     GROUP_CONCAT(Genero.nome SEPARATOR ", ") AS generos

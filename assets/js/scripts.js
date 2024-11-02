@@ -22,10 +22,10 @@ function deleteGame() {
         //toast a dizer que eliminou
         Toastify({
             text: "Jogo eliminado com sucesso",
-            duration: 1000,
+            duration: 2000,
             close: true,
             gravity: "top",
-            backgroundColor: "linear-gradient(to right, #ff0000, #ff0000)"
+            backgroundColor: "linear-gradient(200deg, rgba(255,0,0,1) 0%, rgba(255,33,0,1) 50%, rgba(221,255,0,1) 86%)"
         }).showToast();
 
         // Redireciona para a URL de eliminar após 1 segundos

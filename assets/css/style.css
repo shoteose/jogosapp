@@ -1,9 +1,19 @@
-body {
+body, html {
   font-family: Arial, sans-serif;
+  height: 100vh;
   margin: 0;
   padding: 0;
-  background-color: #f8f8f8;
 }
+
+body {
+  min-height: 100vh;
+}
+
+.bg-image {
+  height: 100%;
+  background-position: center;
+}
+
 
 table {
   margin: 0 auto;

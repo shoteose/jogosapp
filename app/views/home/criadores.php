@@ -29,7 +29,7 @@
     </div>
     <div class="row">
       <div class="col-12">
-      <a href="<?php echo $url_alias;?>" class="btn btn-info">Voltar</a>
+      <a href="<?php echo $url_alias;?>/" class="btn btn-info">Voltar</a>
       </div>
     </div>
 

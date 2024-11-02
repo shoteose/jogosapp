@@ -17,7 +17,7 @@
     <h1 class="text-center mb-4">Listagem de Gêneros</h1>
 
     <div class="d-flex justify-content-between mb-3">
-      <a href="<?php echo $url_alias; ?>" class="btn btn-secondary btn-sm">Voltar</a>
+      <a href="<?php echo $url_alias; ?>/" class="btn btn-secondary btn-sm">Voltar</a>
       <a href="<?php echo $url_alias; ?>/genero/create" class="btn btn-success btn-sm">Adicionar Gênero</a>
     </div>
 
