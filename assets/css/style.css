@@ -129,19 +129,27 @@ table {
   margin-bottom: 10px;
   opacity: 0;
   transition: opacity 0.5s ease-in-out; 
-  background-color: white; 
-  color: black; 
+  background-color: white !important; 
+  color: black !; 
   border: 2px solid black; 
 }
 
 .supriseModaFoca .btn-custom {
-  opacity: 1; 
+  opacity: 1;
 }
 
+#textosBotao {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.supriseModaFoca {
+  opacity: 1 !important; 
+}
 
 .btn-custom:hover {
   border-color: rgb(136, 136, 136);
   background-color: rgb(136, 136, 136); 
-  color: white; 
+   
 }
 

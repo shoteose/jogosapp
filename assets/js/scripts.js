@@ -80,9 +80,22 @@ function deleteGenero() {
 // Função para detectar o fim da animação
 document.addEventListener("DOMContentLoaded", function () {
     const title = document.getElementById('tituloIndex');
-    title.addEventListener("animationend", function () {
-        document.getElementById('botoes').classList.add('supriseModaFoca');
-    });
+    const titleCriadores = document.getElementById('tituloCriadores');
+    console.log("o titulo do index deu:" + title);
+    console.log("o titulo do criadores deu:" + titleCriadores);
+    if (titleCriadores) {
+        titleCriadores.addEventListener("animationend", function () {
+            console.log("help bro");
+            document.getElementById('textosBotao').classList.add('supriseModaFoca');
+        });
+    }
+    else if (title) {
+        title.addEventListener("animationend", function () {
+            document.getElementById('botoes').classList.add('supriseModaFoca');
+        });
+    }
+
+
 });
 
 //-----------------------------------------------------------------------------------

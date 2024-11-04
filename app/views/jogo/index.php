@@ -43,6 +43,7 @@
 
             echo '<div class="mt-auto d-flex justify-content-between align-items-center">';
             echo '<a href="./jogo/get/' . $jogo['id'] . '" class="btn btn-sm btn-outline-secondary">Ver detalhes</a>';
+            echo '<a href="./jogo/update/' . $jogo['id'] . '" class="btn btn-sm btn-outline-secondary">Editar Jogo</a>';
             echo '<a class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalEliminar" data-id="' . $jogo['id'] . '">Apagar jogo</a>';
             echo '</div>';
 

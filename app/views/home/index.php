@@ -24,9 +24,9 @@
     </div>
     <div class="row mt-3" id="botoes">
       <div class="col-12 ms-5 d-flex flex-column align-items-center">
-        <a href="<?php echo $url_alias;?>/jogo" class="btn btn-info btn-md btn-custom">Ver jogos</a>
-        <a href="<?php echo $url_alias;?>/genero" class="btn btn-info btn-md btn-custom">Ver Gêneros</a>
-        <a href="<?php echo $url_alias;?>/home/criadores" class="btn btn-info btn-md btn-custom">Ver Criadores</a>
+        <a href="<?php echo $url_alias;?>/jogo" class="btn btn-md btn-custom">Ver jogos</a>
+        <a href="<?php echo $url_alias;?>/genero" class="btn btn-md btn-custom">Ver Gêneros</a>
+        <a href="<?php echo $url_alias;?>/criadores" class="btn btn-md btn-custom">Ver Criadores</a>
       </div>
     </div>
   </div>  

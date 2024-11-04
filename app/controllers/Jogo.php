@@ -73,6 +73,30 @@ class Jogo extends Controller
   }
 
 
+  public function update($id=null)
+  {
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    }else{
+
+      if (is_numeric($id)) {
+        $Jogos = $this->model('Jogos');
+        $Generos = $this->model('Generos');
+        $Publicadoras = $this->model('Publicadoras');
+  
+        $data = $Jogos::getJogoById($id);
+        $generos = $Generos::getAllGeneros();
+        $publicadoras = $Publicadoras::getAllPublicadoras();
+        $this->view('jogo/update', ['jogos' => $data ,'publicadoras' => $publicadoras, 'generos' => $generos]);
+  
+      } else {
+        $this->pageNotFound();
+      }
+
+    }
+  }
+
   public function delete($id = null)
   {
     if (is_numeric($id)) {

@@ -60,6 +60,32 @@ class Jogos
 
   }
 
+  public static function getJogoById(int $id)
+  {
+    $conn = new Db();
+    $response = $conn->execQuery('SELECT 
+    Jogo.id AS jogo_id,
+    Jogo.nome AS jogo_nome,
+    Jogo.ano_lancamento,
+    Jogo.caminho_imagem,
+    Publicadora.nome AS publicadora_nome,
+    Publicadora.id AS publicadora_id,
+    GROUP_CONCAT(Genero.id) AS generos_ids,
+    GROUP_CONCAT(Genero.nome SEPARATOR ", ") AS generos_nomes
+    FROM 
+        Jogo
+    LEFT JOIN 
+        Publicadora ON Jogo.id_publicadora = Publicadora.id
+    LEFT JOIN 
+        Jogo_Genero ON Jogo.id = Jogo_Genero.id_jogo
+    LEFT JOIN 
+        Genero ON Jogo_Genero.id_genero = Genero.id
+    WHERE 
+        Jogo.id = ?
+    ', array('i', array($id)));
+    return $response;
+  }
+
   public static function findJogoById(int $id)
   {
     $conn = new Db();
