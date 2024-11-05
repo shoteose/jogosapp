@@ -17,7 +17,7 @@
 <body>
 
   <div class="form-body bg-image" style="background-image: url(../../assets/logos/<?php echo $data['jogos'][0]['caminho_imagem'] ?>)">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center conteudo-jogo">
       <div class="col-md-6">
         <div class="form-holder">
           <div class="form-content p-4">
