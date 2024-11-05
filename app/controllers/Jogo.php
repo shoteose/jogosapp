@@ -84,7 +84,7 @@ class Jogo extends Controller
       $ano_lancamento = $_POST['ano_lancamento'];
       $id_publicadora = $_POST['id_publicadora'];
       $generosNovos = $_POST['id_generos'] ?? [];
-      $generosAntigos = $_POST['generosAntigos'];
+      $generosAntigos = explode(',', $_POST['generosAntigos']);
       $imagem_atual = $_POST['imagem_atual'];
       $imagem_nova = $_FILES['caminho_imagem_novo']['name'] ?? '';
 
@@ -109,6 +109,7 @@ class Jogo extends Controller
         }
     }
 
+    
       // Assume os generos antigos caso os generosNovos estejam vazios.
       $generosFinais = $generosNovos ?: $generosAntigos;
 
