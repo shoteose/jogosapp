@@ -73,27 +73,71 @@ class Jogo extends Controller
   }
 
 
-  public function update($id=null)
+  public function update($id = null)
   {
-
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      
+      $Jogos = $this->model('Jogos');
 
-    }else{
+      $id_jogo = $_POST['id'];
+      $nome = $_POST['nome'];
+      $ano_lancamento = $_POST['ano_lancamento'];
+      $id_publicadora = $_POST['id_publicadora'];
+      $generosNovos = $_POST['id_generos'] ?? [];
+      $generosAntigos = $_POST['generosAntigos'];
+      $imagem_atual = $_POST['imagem_atual'];
+      $imagem_nova = $_FILES['caminho_imagem_novo']['name'] ?? '';
 
-      if (is_numeric($id)) {
-        $Jogos = $this->model('Jogos');
-        $Generos = $this->model('Generos');
-        $Publicadoras = $this->model('Publicadoras');
-  
-        $data = $Jogos::getJogoById($id);
-        $generos = $Generos::getAllGeneros();
-        $publicadoras = $Publicadoras::getAllPublicadoras();
-        $this->view('jogo/update', ['jogos' => $data ,'publicadoras' => $publicadoras, 'generos' => $generos]);
-  
+      // OBRIGADO INTERNET POR TER DESCOBERTO ESTE OPERADOR "ELVIS"
+      // Usa o operador Elvis para determinar a imagem final
+      $imagem_final = $imagem_nova ?: $imagem_atual;
+
+      if ($imagem_nova) {
+
+        $imagem_tmp = $_FILES['caminho_imagem_novo']['tmp_name'];
+        $destino = 'assets/logos/' . $imagem_final;
+    
+        // Move o arquivo para a pasta do projeto
+        if (move_uploaded_file($imagem_tmp, $destino)) 
+        {
+            // És mesmo diferente? e existes mesmo no projeto?? Isso não sei mas a minha mãe diz que posso escrever assim nos comentários, ninguém os lê mesmo
+            if ($imagem_atual !== $imagem_final && file_exists('assets/logos/' . $imagem_atual)) {
+                unlink('assets/logos/' . $imagem_atual);
+            }
+        } else {
+            echo "Erro ao mover a nova imagem.";
+        }
+    }
+
+      // Assume os generos antigos caso os generosNovos estejam vazios.
+      $generosFinais = $generosNovos ?: $generosAntigos;
+
+      $jogoModificado = [
+        'id' => $id_jogo,
+        'nome' => $nome,
+        'ano_lancamento' => $ano_lancamento,
+        'id_publicadora' => $id_publicadora,
+        'caminho_imagem' => $imagem_final,
+        'id_generos' => $generosFinais
+      ];
+
+      $resultado = $Jogos::updateJogo($jogoModificado);
+
+      if ($resultado) {
+        header("Location: /jogosapp/jogo");
+        exit;
       } else {
-        $this->pageNotFound();
+        echo "Erro ao atualizar o jogo.";
       }
+    } else {
+      $Jogos = $this->model('Jogos');
+      $Generos = $this->model('Generos');
+      $Publicadoras = $this->model('Publicadoras');
 
+      $data = $Jogos::getJogoById($id);
+      $generos = $Generos::getAllGeneros();
+      $publicadoras = $Publicadoras::getAllPublicadoras();
+      $this->view('jogo/update', ['jogos' => $data, 'publicadoras' => $publicadoras, 'generos' => $generos]);
     }
   }
 
@@ -109,9 +153,6 @@ class Jogo extends Controller
     }
   }
 }
-
-
-
 
 // :: Scope Resolution Operator
 // Utilizado para acesso às propriedades e métodos das classes

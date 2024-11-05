@@ -70,8 +70,8 @@ class Jogos
     Jogo.caminho_imagem,
     Publicadora.nome AS publicadora_nome,
     Publicadora.id AS publicadora_id,
-    GROUP_CONCAT(Genero.id) AS generos_ids,
-    GROUP_CONCAT(Genero.nome SEPARATOR ", ") AS generos_nomes
+    GROUP_CONCAT(Genero.id) AS generos_id,
+    GROUP_CONCAT(Genero.nome SEPARATOR ", ") AS generos_nome
     FROM 
         Jogo
     LEFT JOIN 
@@ -117,7 +117,7 @@ class Jogos
     $conn = new Db();
 
     $response = $conn->execQuery('INSERT INTO jogo (nome, ano_lancamento, id_publicadora, caminho_imagem) VALUES (?, ?, ?, ?)', array(
-      'ssis',
+      'siis',
       array($data['nome'], $data['ano_lancamento'], $data['id_publicadora'], $data['caminho_imagem'])
     ));
 
@@ -143,7 +143,29 @@ class Jogos
     return $response;
   }
 
-
+  public static function updateJogo($data)
+  {
+      $conn = new Db();
+  
+      $response = $conn->execQuery('UPDATE jogo SET nome = ?, ano_lancamento = ?, id_publicadora = ?, caminho_imagem = ? WHERE id = ?', array(
+          'siisi',
+          array($data['nome'], $data['ano_lancamento'], $data['id_publicadora'], $data['caminho_imagem'], $data['id'])
+      ));
+  
+      $jogoId = $data['id'];
+  
+      $conn->execQuery('DELETE FROM jogo_genero WHERE id_jogo = ?', array('i', array($jogoId)));
+  
+      foreach ($data['id_generos'] as $generoId) {
+          $conn->execQuery('INSERT INTO jogo_genero (id_jogo, id_genero) VALUES (?, ?)', array(
+              'ii',
+              array($jogoId, $generoId)
+          ));
+      }
+  
+      return $response;
+  }
+  
 
   public static function deleteJogo($id)
   {

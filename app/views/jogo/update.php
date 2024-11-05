@@ -55,6 +55,11 @@
                                     </select>
                                 </div>
 
+
+                                <p> Este jogo tem os seguintes Generos associados:</p>
+                                <p> <?php echo $data['jogos'][0]['generos_nome']?></p>
+
+                                <h4>Para mudar de Generos, basta seleciona-los embaixo:</h4>
                                 <div class="col-md-12 mb-3">
                                     <label for="generos">Género(s)</label>
                                     <select class="form-select choices-multiple" id="id_generos" name="id_generos[]"
@@ -66,18 +71,20 @@
                                     </select>
                                 </div>
 
+                                <input type="hidden" name="generosAntigos" value="<?php echo $data['jogos'][0]['generos_id']; ?>">
+                                
+
                                 <div class="col-md-12 mb-3">
                                     <label for="caminho_imagem">Imagem do Jogo</label>
                                     <input type="hidden" name="imagem_atual"
                                         value="<?php echo $data['jogos'][0]['caminho_imagem']; ?>">
-                                    <input class="form-control" type="file" id="caminho_imagem" name="caminho_imagem"
+                                    <input class="form-control" type="file" id="caminho_imagem" name="caminho_imagem_novo"
                                         accept="image/*">
 
                                     <?php if (!empty($data['jogos'][0]['caminho_imagem'])) { ?>
                                         <p>Imagem atual:</p>
                                         <div class="mb-3">
-                                            <img src="<?php echo $url_alias; ?>/assets/logos/<?php echo $data['jogos'][0]['caminho_imagem']; ?>"
-                                                alt="Imagem do Jogo" style="height=100px;">
+                                            <img src="<?php echo $url_alias; ?>/assets/logos/<?php echo $data['jogos'][0]['caminho_imagem']; ?>" alt="Imagem do Jogo" >
                                         </div>
                                     <?php } else { ?>
                                         <p>Nenhuma imagem selecionada</p>
