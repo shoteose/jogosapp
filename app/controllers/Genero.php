@@ -40,12 +40,21 @@ class Genero extends Controller
     }
   }
 
-  public function jogo($id = null)
+  public function jogo($ids = null)
   {
-    if (is_numeric($id)) {
+
+    $partes = explode("&", $ids);
+    $idJogo = $partes[0];
+    $idGenero = $partes[1];
+
+    if (is_numeric($idJogo) && is_numeric($idGenero)) {
+      $Generos = $this->model('Generos');
       $Jogos = $this->model('Jogos');
-      $data = $Jogos::findJogoById($id);
-      $this->view('genero/jogo', ['jogos' => $data]);
+
+      $data = $Generos::findGeneroById($idGenero);
+      $jogos = $Jogos::getJogoById($idJogo);
+
+      $this->view('genero/jogo', ['generos' => $data, 'jogos' => $jogos, 'idGenero' => $idGenero]);
     } else {
       $this->pageNotFound();
     }
