@@ -2,7 +2,6 @@
 
 body, html {
   font-family: Arial, sans-serif;
-  height: 100vh;
   margin: 0;
   padding: 0;
   background-color: black !important;
@@ -14,6 +13,7 @@ h1, h2, h3, h4, h5, h6, p, label {
 
 body {
   min-height: 100vh;
+  height: auto !important;
 }
 
 .bg-image {
@@ -22,11 +22,13 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .bg-image::before {
   content: '';
   position: absolute;
+  height: 100%;
   top: 0;
   left: 0;
   right: 0;
@@ -34,6 +36,7 @@ body {
   background-image: inherit;
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   filter: blur(8px); /* Ajuste o valor para mais ou menos desfoque */
   z-index: 1;
 }
