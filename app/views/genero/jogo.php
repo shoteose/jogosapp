@@ -1,3 +1,7 @@
+<?php 
+  session_start();
+  $genero = $_SESSION['genero'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,7 +53,7 @@
                 </div>
 
                 <div class="form-button pb-3 text-center">
-                  <a href="<?php echo $url_alias?>/genero/" class="btn btn-danger">Voltar</a>
+                  <a href="<?php echo $url_alias?>/genero/get/<?php echo $genero?>" class="btn btn-danger">Voltar</a>
                 </div>
               </form>
             </div>
