@@ -48,8 +48,8 @@
                                     <p><?php echo $data['jogos'][0]['generos_nome'] ?></p>
                                 </div>
 
-                                <div class="d-flex justify-content-between mb-3">
-                                    <a href="<?php echo $url_alias; ?>/genero/get/<?php echo $data['idGenero'];?>" class="btn btn-secondary btn-sm">Voltar</a>
+                                <div class="form-button pb-3 text-center">
+                                    <a href="<?php echo $url_alias; ?>/genero/get/<?php echo $data['idGenero'];?>" class="btn btn-danger">Voltar</a>
                                 </div>
 
                             </form>
