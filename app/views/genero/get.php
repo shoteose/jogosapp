@@ -26,24 +26,30 @@
     <a href="<?php echo $url_alias; ?>/genero" class="btn btn-secondary btn-sm">Voltar</a>
     </div>
 
-    <div class="album py-3 bg-dark">
+    <div class="album">
       <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          <?php foreach ($data['jogos'] as $jogo) { ?>
-            <div class="col">
-              <div class="card bg-dark h-100">
-                <div style="height: 225px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                  <img src="<?php echo $url_alias; ?>/assets/logos/<?php echo $jogo['caminho_imagem']; ?>" class="img-fluid" style="max-height: 100%; max-width: 100%;" alt="Imagem de <?php echo $jogo['nome']; ?>">
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title"><?php echo $jogo['nome']; ?></h5>
-                  <p class="card-text"><strong>Ano de Lançamento:</strong> <?php echo $jogo['ano_lancamento']; ?></p>
-                  <p class="card-text"><strong>Publicadora:</strong> <?php echo $jogo['nome_publicadora']; ?></p>
-                  <a href="../../jogo/get/<?php echo $jogo['id']; ?>" class="btn btn-sm btn-outline-secondary me-2">Ver mais detalhes</a>
-                </div>
-              </div>
-            </div>
-          <?php } ?>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="jogosList">
+          <?php
+          foreach ($data['jogos'] as $jogo) {
+            echo '<div class="col jogo-item">';
+            echo '<div class="card bg-dark shadow-sm h-100">';
+
+            echo '<div style="height: 225px; display: flex; align-items: center; justify-content: center; overflow: hidden;">';
+            echo '<img src="../../assets/logos/' . $jogo['caminho_imagem'] . '" class="img-fluid" style="max-height: 100%; max-width: 100%;" alt="Imagem de ' . $jogo['nome'] . '">';
+            echo '</div>';
+
+            echo '<div class="card-body d-flex flex-column">';
+            echo '<h5 class="card-title jogo-nome mb-3">' . $jogo['nome'] . '</h5>';
+
+            echo '<div class="mt-auto d-flex justify-content-between align-items-center">';
+            echo '<a href="../../jogo/get/' . $jogo['id'] . '" class="btn btn-sm mt-auto btn-outline-info">Ver detalhes</a>';
+            echo '</div>';
+
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+          }
+          ?>
         </div>
       </div>
     </div>

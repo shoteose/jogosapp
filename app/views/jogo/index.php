@@ -38,13 +38,13 @@
             echo '<img src="assets/logos/' . $jogo['caminho_imagem'] . '" class="img-fluid" style="max-height: 100%; max-width: 100%;" alt="Imagem de ' . $jogo['nome'] . '">';
             echo '</div>';
 
-            echo '<div class="card-body">';
+            echo '<div class="card-body d-flex flex-column">';
             echo '<h5 class="card-title jogo-nome mb-3">' . $jogo['nome'] . '</h5>';
 
             echo '<div class="mt-auto d-flex justify-content-between align-items-center">';
-            echo '<a href="./jogo/get/' . $jogo['id'] . '" class="btn btn-sm btn-outline-secondary">Ver detalhes</a>';
-            echo '<a href="./jogo/update/' . $jogo['id'] . '" class="btn btn-sm btn-outline-info">Editar Jogo</a>';
-            echo '<a class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalEliminar" data-id="' . $jogo['id'] . '">Apagar jogo</a>';
+            echo '<a href="./jogo/get/' . $jogo['id'] . '" class="btn btn-sm mt-auto btn-outline-secondary">Ver detalhes</a>';
+            echo '<a href="./jogo/update/' . $jogo['id'] . '" class="btn btn-sm mt-auto btn-outline-info">Editar Jogo</a>';
+            echo '<a class="btn btn-sm mt-auto btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalEliminar" data-id="' . $jogo['id'] . '">Apagar jogo</a>';
             echo '</div>';
 
             echo '</div>';
