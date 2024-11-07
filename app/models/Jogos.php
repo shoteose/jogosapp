@@ -60,6 +60,30 @@ class Jogos
 
   }
 
+  public static function getAllJogosByPublicadoraId(int $id){
+
+    $conn = new Db();
+
+    $query = 'SELECT jogo.id, jogo.nome, 
+        genero.nome AS generos, 
+        jogo.caminho_imagem, jogo.ano_lancamento, 
+        publicadora.nome AS nome_publicadora,
+        publicadora.pais AS pais_publicadora
+        FROM jogo 
+        LEFT JOIN jogo_genero ON jogo.id = jogo_genero.id_jogo 
+        LEFT JOIN genero ON jogo_genero.id_genero = genero.id 
+        JOIN publicadora ON jogo.id_publicadora = publicadora.id 
+        WHERE publicadora.id = ' . $id . ' GROUP BY jogo.id;
+    ';
+
+
+
+    $response = $conn->execQuery($query, []);
+    return $response;
+
+  }
+
+
   public static function getJogoById(int $id)
   {
     $conn = new Db();
@@ -96,6 +120,7 @@ class Jogos
     Jogo.caminho_imagem,
     Publicadora.nome AS publicadora_nome,
     Publicadora.pais AS publicadora_pais,
+    Publicadora.id AS publicadora_id,
     GROUP_CONCAT(Genero.nome SEPARATOR ", ") AS generos
     FROM 
         Jogo
@@ -166,7 +191,6 @@ class Jogos
       return $response;
   }
   
-
   public static function deleteJogo($id)
   {
     $conn = new Db();

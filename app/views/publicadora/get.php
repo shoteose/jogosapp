@@ -14,16 +14,16 @@
 
 <body>
   <div class="container my-5">
-    <?php if (count($data['generos']) == 0) { ?>
+    <?php if (count($data['publicadoras']) == 0) { ?>
       <h1>O género não existe na nossa base de dados...</h1>
     <?php } else { ?>
       <div>
-        <?php echo "<h1 class=\"text-center mb-4\">Listagem de Jogos com o Genero " . $data['generos'][0]['nome'] . "</h1>"?>
+        <?php echo "<h1 class=\"text-center mb-4\">Listagem de Jogos da " . $data['publicadoras'][0]['nome'] . "</h1>"?>
       </div>
     <?php } ?>
 
     <div class="d-flex justify-content-between mb-3">
-    <a href="<?php echo $url_alias; ?>/genero" class="btn btn-secondary btn-sm">Voltar</a>
+    <a href="<?php echo $url_alias; ?>/publicadora" class="btn btn-secondary btn-sm">Voltar</a>
     </div>
 
     <div class="album">
@@ -42,7 +42,7 @@
             echo '<h5 class="card-title jogo-nome mb-3">' . $jogo['nome'] . '</h5>';
 
             echo '<div class="mt-auto d-flex justify-content-between align-items-center">';
-            echo '<a href="'. $url_alias .'/genero/jogo/' . $jogo['id'] . '" class="btn btn-sm mt-auto btn-outline-info">Ver detalhes</a>';
+            echo '<a href="'. $url_alias .'/publicadora/jogo/' . $jogo['id'] . '" class="btn btn-sm mt-auto btn-outline-info">Ver detalhes</a>';
             echo '</div>';
 
             echo '</div>';

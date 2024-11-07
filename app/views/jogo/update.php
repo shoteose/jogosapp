@@ -23,23 +23,20 @@
                     <div class="form-content p-4">
                         <div class="form-items">
                             <h2 class="text-center">Editar Jogo</h2>
-                            <form action="<?php echo $url_alias; ?>/jogo/update" method="POST"
-                                enctype="multipart/form-data">
+                            <form action="<?php echo $url_alias; ?>/jogo/update" method="POST" enctype="multipart/form-data">
 
                                 <input type="hidden" name="id" value="<?php echo $data['jogos'][0]['jogo_id']; ?>">
 
                                 <div class="col-md-12 mb-3">
                                     <label for="nome_jogo">Nome do jogo:</label>
                                     <input class="form-control" type="text" id="nome" name="nome"
-                                        value="<?php echo $data['jogos'][0]['jogo_nome']; ?>"
-                                        placeholder="Nome do Jogo">
+                                        value="<?php echo $data['jogos'][0]['jogo_nome']; ?>" placeholder="Nome do Jogo">
                                 </div>
 
                                 <div class="col-md-12 mb-3">
                                     <label for="ano_lancamento">Ano de Lançamento:</label>
                                     <input class="form-control" type="number" id="ano_lancamento" name="ano_lancamento"
-                                        value="<?php echo $data['jogos'][0]['ano_lancamento']; ?>"
-                                        placeholder="Ano de Lançamento">
+                                        value="<?php echo $data['jogos'][0]['ano_lancamento']; ?>" placeholder="Ano de Lançamento">
                                 </div>
 
 
@@ -48,16 +45,22 @@
                                     <select class="form-select" id="id_publicadora" name="id_publicadora">
                                         <option value="<?php echo $data['jogos'][0]['publicadora_id']; ?>">
                                             <?php echo $data['jogos'][0]['publicadora_nome']; ?></option>
-                                        <?php foreach ($data['publicadoras'] as $publicadora) { ?>
-                                            <option value="<?php echo $publicadora['id']; ?>">
-                                                <?php echo $publicadora['nome']; ?></option>
-                                        <?php } ?>
+                                        <?php
+                                        foreach ($data['publicadoras'] as $publicadora) {
+
+                                            if ($publicadora['id'] != $data['jogos'][0]['publicadora_id']) {
+
+                                                echo "<option value=" . $publicadora['id'] . "> " . $publicadora['nome'] . " </option>";
+                                            }
+                                        }
+                                        ?>
+
                                     </select>
                                 </div>
 
 
                                 <p> Este jogo tem os seguintes Generos associados:</p>
-                                <p> <?php echo $data['jogos'][0]['generos_nome']?></p>
+                                <p> <?php echo $data['jogos'][0]['generos_nome'] ?></p>
 
                                 <h4>Para mudar de Generos, basta seleciona-los embaixo:</h4>
                                 <div class="col-md-12 mb-3">
@@ -72,7 +75,7 @@
                                 </div>
 
                                 <input type="hidden" name="generosAntigos" value="<?php echo $data['jogos'][0]['generos_id']; ?>">
-                                
+
 
                                 <div class="col-md-12 mb-3">
                                     <label for="caminho_imagem">Imagem do Jogo</label>
@@ -84,7 +87,7 @@
                                     <?php if (!empty($data['jogos'][0]['caminho_imagem'])) { ?>
                                         <p>Imagem atual:</p>
                                         <div class="mb-3">
-                                            <img src="<?php echo $url_alias; ?>/assets/logos/<?php echo $data['jogos'][0]['caminho_imagem']; ?>" alt="Imagem do Jogo" >
+                                            <img src="<?php echo $url_alias; ?>/assets/logos/<?php echo $data['jogos'][0]['caminho_imagem']; ?>" alt="Imagem do Jogo">
                                         </div>
                                     <?php } else { ?>
                                         <p>Nenhuma imagem selecionada</p>

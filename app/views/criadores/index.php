@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Criadores</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="<?php echo $url_alias ?>/assets/css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -28,7 +28,7 @@
     </div>
   </div>
 
-  <script src="assets/js/scripts.js"></script>
+  <script src="<?php echo $url_alias ?>/assets/js/scripts.js"></script>
 </body>
 
 </html>

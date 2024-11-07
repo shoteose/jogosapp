@@ -13,56 +13,57 @@
 
 <body>
 
-<div class="form-body">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="form-holder">
-                <div class="form-content p-4">
-                    <div class="form-items">
-                        <h2 class="text-center">Criar Novo Jogo</h2>
-                        <form action="<?php echo $url_alias; ?>/jogo/create" method="POST" enctype="multipart/form-data">
+    <div class="form-body">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="form-holder">
+                    <div class="form-content p-4">
+                        <div class="form-items">
+                            <h2 class="text-center">Criar Novo Jogo</h2>
+                            <form action="<?php echo $url_alias; ?>/jogo/create" method="POST" enctype="multipart/form-data">
 
-                            <div class="col-md-12 mb-3">
-                                <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome do Jogo">
-                            </div>
+                                <div class="col-md-12 mb-3">
+                                    <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome do Jogo">
+                                </div>
 
-                            <div class="col-md-12 mb-3">
-                                <input class="form-control" type="number" id="ano_lancamento" name="ano_lancamento" placeholder="Ano de Lançamento">
-                            </div>
+                                <div class="col-md-12 mb-3">
+                                    <input class="form-control" type="number" id="ano_lancamento" name="ano_lancamento" placeholder="Ano de Lançamento">
+                                </div>
 
-                            <div class="col-md-12 mb-3">
-                                <select class="form-select" id="id_publicadora" name="id_publicadora">
-                                    <option selected disabled value="">Publicadora</option>
-                                    <?php foreach ($data['publicadoras'] as $publicadora) { ?>
-                                        <option value="<?php echo $publicadora['id']; ?>"><?php echo $publicadora['nome']; ?></option>
-                                    <?php } ?>
-                                </select>
-                            </div>
+                                <div class="col-md-12 mb-3">
+                                    <select class="form-select" id="id_publicadora" name="id_publicadora">
+                                        <option selected disabled value="">Publicadora</option>
+                                        <?php foreach ($data['publicadoras'] as $publicadora) { ?>
+                                            <option value="<?php echo $publicadora['id']; ?>"><?php echo $publicadora['nome']; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
 
-                            <div class="col-md-12 mb-3">
-                                <select class="form-select choices-multiple" id="id_generos" name="id_generos[]" multiple>
-                                    <?php foreach ($data['generos'] as $genero) { ?>
-                                        <option value="<?php echo $genero['id']; ?>"><?php echo $genero['nome']; ?></option>
-                                    <?php } ?>
-                                </select>
-                            </div>
+                                <div class="col-md-12 mb-3">
+                                    <select class="form-select choices-multiple" id="id_generos" name="id_generos[]" multiple>
+                                        <?php foreach ($data['generos'] as $genero) { ?>
+                                            <option value="<?php echo $genero['id']; ?>"><?php echo $genero['nome']; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
 
-                            <div class="col-md-12 mb-3">
-                                <input class="form-control" type="file" id="caminho_imagem" name="caminho_imagem" accept="image/*">
-                            </div>
+                                <div class="col-md-12 mb-3">
+                                    <input class="form-control" type="file" id="caminho_imagem" name="caminho_imagem" accept="image/*">
+                                </div>
 
-                            <div class="form-button mt-3 text-center">
-                                <button type="submit" class="btn btn-primary">Criar Jogo</button>
-                                <a href="<?php echo $url_alias; ?>/jogo" class="btn btn-secondary">Voltar</a>
-                            </div>
-                        </form>
+                                <div class="form-button mt-3 text-center">
+                                    <button type="submit" class="btn btn-primary">Criar Jogo</button>
+                                    <a href="<?php echo $url_alias; ?>/jogo" class="btn btn-secondary">Voltar</a>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
 </body>
+
 </html>

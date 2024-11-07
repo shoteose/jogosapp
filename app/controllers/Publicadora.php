@@ -2,15 +2,15 @@
 
 use app\core\Controller;
 
-class Genero extends Controller
+class Publicadora extends Controller
 {
   /**
    * Invocação da view index.php
    */
   public function index()
   {
-    $Generos = $this->model('Generos'); // é retornado o model Generos()
-    $data = $Generos::getAllGeneros();
+    $publicadoras = $this->model('Publicadoras'); // é retornado o model Publicadora()
+    $data = $publicadoras::getAllPublicadoras();
     /*
     $Movies = new Movies();
     $data = $Movies->getAllMovies();
@@ -18,7 +18,7 @@ class Genero extends Controller
     $Movies = "Movies";
     $data = $Movies::getAllMovies();
     */
-    $this->view('genero/index', ['generos' => $data]);
+    $this->view('publicadora/index', ['publicadoras' => $data]);
   }
 
   /**
@@ -29,23 +29,22 @@ class Genero extends Controller
   public function get($id = null)
   {
     if (is_numeric($id)) {
-      $Generos = $this->model('Generos');
+      $publicadoras = $this->model('Publicadoras');
       $Jogos = $this->model('Jogos');
-      $data = $Generos::findGeneroById($id);
-      $jogos = $Jogos::getAllJogosByGeneroId($id);
+      $data = $publicadoras::findPublicadoraById($id);
+      $jogos = $Jogos::getAllJogosByPublicadoraId($id);
       // $data2 = $Jogos::getAllJogos();
-      $this->view('genero/get', ['generos' => $data, 'jogos' => $jogos]);
+      $this->view('publicadora/get', ['publicadoras' => $data, 'jogos' => $jogos]);
     } else {
       $this->pageNotFound();
     }
   }
 
-  public function jogo($id = null)
-  {
+  public function jogo($id =null){
     if (is_numeric($id)) {
       $Jogos = $this->model('Jogos');
       $data = $Jogos::findJogoById($id);
-      $this->view('genero/jogo', ['jogos' => $data]);
+      $this->view('publicadora/jogo', ['jogos' => $data]);
     } else {
       $this->pageNotFound();
     }
@@ -53,21 +52,22 @@ class Genero extends Controller
 
   public function create()
   {
-    $Generos = $this->model('Generos');
+    $publicadoras = $this->model('Publicadoras');
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-      $novoGenero = [
-        'nome' => $_POST['nome']
+      $novopublicadora=[
+        'nome' => $_POST['nome'],
+        'pais' => $_POST['pais']
       ];
 
-      $info = $Generos::addGenero($novoGenero);
+      $info = $publicadoras::addPublicadora($novopublicadora);
 
-      header("Location: /jogosapp/genero");
+      header("Location: /jogosapp/publicadora");
       exit();
-    } else {
+    }else{
 
-      $this->view('genero/create', ['generos' => $Generos]);
+      $this->view('publicadora/create', ['publicadoras' => $publicadoras]);
     }
   }
 
@@ -75,9 +75,9 @@ class Genero extends Controller
   public function delete($id = null)
   {
     if (is_numeric($id)) {
-      $Generos = $this->model('Generos');
-      $data = $Generos::deleteGenero($id);
-      header("Location: /jogosapp/genero");
+      $publicadoras = $this->model('Publicadoras');
+      $data = $publicadoras::deletePublicadora($id);
+      header("Location: /jogosapp/publicadora");
       exit();
     } else {
       $this->pageNotFound();
