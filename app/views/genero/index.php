@@ -23,11 +23,11 @@
 
     <div class="list-group">
       <?php foreach ($data['generos'] as $genero) { ?>
-        <div class="bg-dark list-group-item d-flex flex-column flex-md-row justify-content-between align-items-start">
-          <span class="mb-2 mb-md-0"><?php echo $genero['nome']; ?></span>
-          <div class="d-flex flex-wrap gap-2">
-            <a href="./genero/get/<?php echo $genero['id']; ?>" class="btn btn-sm btn-outline-secondary">Ver Jogos</a>
-            <a data-bs-toggle="modal" data-bs-target="#modalEliminarGe" data-id="<?php echo $genero['id']; ?>" class="btn btn-sm btn-outline-danger">Delete</a>
+        <div class="bg-dark list-group-item d-flex justify-content-between align-items-center">
+          <span><?php echo $genero['nome']; ?></span>
+          <div>
+            <a href="./genero/get/<?php echo $genero['id']; ?>" class="btn btn-sm btn-outline-secondary me-2">Ver Jogos com este Gênero</a>
+            <a data-bs-toggle="modal" data-bs-target="#modalEliminarGe" data-id="<?php echo $genero['id']; ?>" class="btn btn-sm btn-outline-danger">Apagar género</a>
           </div>
         </div>
       <?php } ?>
