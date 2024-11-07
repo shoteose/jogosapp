@@ -27,7 +27,7 @@
           <span><?php echo $genero['nome']; ?></span>
           <div>
             <a href="./genero/get/<?php echo $genero['id']; ?>" class="btn btn-sm btn-outline-secondary me-2">Ver Jogos com este Gênero</a>
-            <a data-bs-toggle="modal" data-bs-target="#modalEliminarGe" data-id="<?php echo $genero['id']; ?>" class="btn btn-sm btn-outline-danger">Delete</a>
+            <a data-bs-toggle="modal" data-bs-target="#modalEliminarGe" data-id="<?php echo $genero['id']; ?>" class="btn btn-sm btn-outline-danger">Apagar género</a>
           </div>
         </div>
       <?php } ?>
