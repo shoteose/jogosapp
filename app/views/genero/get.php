@@ -1,8 +1,3 @@
-<?php 
-  session_start();
-  $_SESSION['genero'] = $data['generos'][0]['id'];
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 

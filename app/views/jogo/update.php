@@ -87,7 +87,7 @@
                                     <?php if (!empty($data['jogos'][0]['caminho_imagem'])) { ?>
                                         <p>Imagem atual:</p>
                                         <div class="mb-3">
-                                            <img src="<?php echo $url_alias; ?>/assets/logos/<?php echo $data['jogos'][0]['caminho_imagem']; ?>" alt="Imagem do Jogo">
+                                            <img src="<?php echo $url_alias; ?>/assets/logos/<?php echo $data['jogos'][0]['caminho_imagem']; ?>" class="img-fluid" alt="Imagem do Jogo">
                                         </div>
                                     <?php } else { ?>
                                         <p>Nenhuma imagem selecionada</p>

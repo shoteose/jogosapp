@@ -1,7 +1,3 @@
-<?php 
-  session_start();
-  $genero = $_SESSION['genero'];
-?>
 <!DOCTYPE html>
 <html lang="en">
 
