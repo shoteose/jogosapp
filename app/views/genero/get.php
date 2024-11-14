@@ -47,7 +47,7 @@
             echo '<h5 class="card-title jogo-nome mb-3">' . $jogo['nome'] . '</h5>';
 
             echo '<div class="mt-auto d-flex justify-content-between align-items-center">';
-            echo '<a href="'. $url_alias .'/genero/jogo/' . $jogo['id'] . '" class="btn btn-sm mt-auto btn-outline-info">Ver detalhes</a>';
+            echo '<a href="'. $url_alias .'/genero/jogo/' . $jogo['id'] . '&' . $data['generos'][0]['id'] . '" class="btn btn-sm mt-auto btn-outline-info">Ver detalhes</a>';
             echo '</div>';
 
             echo '</div>';

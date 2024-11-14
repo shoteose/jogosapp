@@ -156,7 +156,7 @@ table {
 }
 
 .btn-custom {
-  width: 150px;
+  width: 175px;
   margin-bottom: 10px;
   opacity: 0;
   transition: opacity 0.5s ease-in-out; 

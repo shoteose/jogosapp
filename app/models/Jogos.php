@@ -94,6 +94,7 @@ class Jogos
     Jogo.caminho_imagem,
     Publicadora.nome AS publicadora_nome,
     Publicadora.id AS publicadora_id,
+    Publicadora.pais AS publicadora_pais,
     GROUP_CONCAT(Genero.id) AS generos_id,
     GROUP_CONCAT(Genero.nome SEPARATOR ", ") AS generos_nome
     FROM 
