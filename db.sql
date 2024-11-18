@@ -8,6 +8,12 @@ CREATE TABLE Publicadora (
     pais VARCHAR(255)
 );
 
+-- Tabela de Gêneros
+CREATE TABLE Genero (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL
+);
+
 -- Tabela de Jogos
 CREATE TABLE Jogo (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -18,11 +24,6 @@ CREATE TABLE Jogo (
     FOREIGN KEY (id_publicadora) REFERENCES Publicadora(id)
 );
 
--- Tabela de Gêneros
-CREATE TABLE Genero (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(255) NOT NULL
-);
 
 -- Tabela de Relacionamento entre Jogos e Gêneros (M:N)
 CREATE TABLE Jogo_Genero (
@@ -52,19 +53,19 @@ INSERT INTO Genero (nome) VALUES
 
 -- Inserir dados na tabela Jogo
 INSERT INTO Jogo (nome, ano_lancamento, id_publicadora) VALUES
-('FIFA 2024', 2023, 1),   -- Publicadora: Electronic Arts
-('Assassin\'s Creed Valhalla', 2020, 2),  -- Publicadora: Ubisoft
-('Monster Hunter World', 2018, 3), -- Publicadora: Capcom
-('Final Fantasy XV', 2016, 4),  -- Publicadora: Square Enix
-('The Legend of Zelda: Breath of the Wild', 2017, 5);  -- Publicadora: Nintendo
+('FIFA 2024', 2023, 1),   
+('Assassin\'s Creed Valhalla', 2020, 2),  
+('Monster Hunter World', 2018, 3), 
+('Final Fantasy XV', 2016, 4),  
+('The Legend of Zelda: Breath of the Wild', 2017, 5); 
 
 -- Inserir dados na tabela Jogo_Genero (Relacionamento entre Jogos e Gêneros)
 INSERT INTO Jogo_Genero (id_jogo, id_genero) VALUES
-(1, 4),  -- FIFA 2024 é Esportes
-(2, 1),  -- Assassin's Creed Valhalla é Ação
-(2, 2),  -- Assassin's Creed Valhalla é Aventura
-(3, 1),  -- Monster Hunter World é Ação
-(3, 2),  -- Monster Hunter World é Aventura
-(4, 3),  -- Final Fantasy XV é RPG
-(5, 2),  -- The Legend of Zelda: Breath of the Wild é Aventura
-(5, 1);  -- The Legend of Zelda: Breath of the Wild é Ação
+(1, 4),  
+(2, 1),  
+(2, 2),  
+(3, 1),  
+(3, 2),  
+(4, 3),  
+(5, 2),  
+(5, 1);  
