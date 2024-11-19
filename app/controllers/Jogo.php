@@ -37,7 +37,7 @@ class Jogo extends Controller
   public function create()
   {
 
-    if ($_SESSION['user_id'] == 1) {
+    if ($_SESSION['user_id_acess'] == 1) {
 
       // carrega os modelos necessários
       $Jogos = $this->model('Jogos');
@@ -100,7 +100,7 @@ class Jogo extends Controller
   public function update($id = null)
   {
 
-    if ($_SESSION['user_id'] == 1) {
+    if ($_SESSION['user_id_acess'] == 1) {
 
       // se receber o metodo post entra no if, se não devolve a view com os dados do jogo e das publiucadores e generos
       if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -174,7 +174,7 @@ class Jogo extends Controller
 
   public function delete($id = null)
   {
-    if ($_SESSION['user_id'] == 1) {
+    if ($_SESSION['user_id_acess'] == 1) {
 
       if (is_numeric($id)) {
         $Jogos = $this->model('Jogos');

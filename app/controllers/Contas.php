@@ -21,7 +21,7 @@ class Contas extends Controller
 
       if (!empty($conta)) {
         
-        $_SESSION['user_id'] = $conta[0]['id'];
+        $_SESSION['user_id_acess'] = $conta[0]['id'];
 
         header("Location: /jogosapp/home/index");
         exit();

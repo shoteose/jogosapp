@@ -66,7 +66,7 @@ class Genero extends Controller
 
   public function create()
   {
-    if ($_SESSION['user_id'] == 1) {
+    if ($_SESSION['user_id_acess'] == 1) {
 
       $Generos = $this->model('Generos');
 
@@ -93,7 +93,7 @@ class Genero extends Controller
 
   public function delete($id = null)
   {
-    if ($_SESSION['user_id'] == 1) {
+    if ($_SESSION['user_id_acess'] == 1) {
 
       if (is_numeric($id)) {
         $Generos = $this->model('Generos');

@@ -53,7 +53,7 @@ class Publicadora extends Controller
 
   public function create()
   {
-    if ($_SESSION['user_id'] == 1) {
+    if ($_SESSION['user_id_acess'] == 1) {
 
       $publicadoras = $this->model('Publicadoras');
 
@@ -81,7 +81,7 @@ class Publicadora extends Controller
 
   public function delete($id = null)
   {
-    if ($_SESSION['user_id'] == 1) {
+    if ($_SESSION['user_id_acess'] == 1) {
 
       if (is_numeric($id)) {
         $publicadoras = $this->model('Publicadoras');

@@ -1,4 +1,4 @@
-<?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == 1) { ?>
+<?php if (isset($_SESSION['user_id_acess']) && $_SESSION['user_id_acess'] == 1) { ?>
 
   <!DOCTYPE html>
   <html lang="en">

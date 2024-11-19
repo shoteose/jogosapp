@@ -1,4 +1,4 @@
-<?php if (!isset($_SESSION['user_id'])) {?>
+<?php if (!isset($_SESSION['user_id_acess'])) {?>
 
   <!doctype html>
   <html lang="en">
