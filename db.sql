@@ -33,6 +33,20 @@ CREATE TABLE Jogo_Genero (
     FOREIGN KEY (id_genero) REFERENCES Genero(id)
 );
 
+CREATE TABLE tipo_user (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    descricao VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE utilizadores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    tipo_user_id INT NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    FOREIGN KEY (tipo_user_id) REFERENCES tipo_user(id)
+);
+
 
 -- Inserir dados na tabela Publicadora
 INSERT INTO Publicadora (nome, pais) VALUES
@@ -60,11 +74,18 @@ INSERT INTO Jogo (nome, ano_lancamento, id_publicadora) VALUES
 
 -- Inserir dados na tabela Jogo_Genero (Relacionamento entre Jogos e Gêneros)
 INSERT INTO Jogo_Genero (id_jogo, id_genero) VALUES
-(1, 4),  -- FIFA 2024 é Esportes
-(2, 1),  -- Assassin's Creed Valhalla é Ação
-(2, 2),  -- Assassin's Creed Valhalla é Aventura
-(3, 1),  -- Monster Hunter World é Ação
-(3, 2),  -- Monster Hunter World é Aventura
-(4, 3),  -- Final Fantasy XV é RPG
-(5, 2),  -- The Legend of Zelda: Breath of the Wild é Aventura
-(5, 1);  -- The Legend of Zelda: Breath of the Wild é Ação
+(1, 4),  
+(2, 1),  
+(2, 2),  
+(3, 1),  
+(3, 2),  
+(4, 3),  
+(5, 2),  
+(5, 1);  
+
+INSERT INTO tipo_user (descricao) VALUES
+('admin'),
+('utilizador');
+
+INSERT INTO utilizadores (nome, email, tipo_user_id, password) VALUES
+('admin', 'admin@admin.admin', 1, 'admin');

@@ -40,7 +40,8 @@ class Publicadora extends Controller
     }
   }
 
-  public function jogo($id =null){
+  public function jogo($id = null)
+  {
     if (is_numeric($id)) {
       $Jogos = $this->model('Jogos');
       $data = $Jogos::findJogoById($id);
@@ -52,35 +53,46 @@ class Publicadora extends Controller
 
   public function create()
   {
-    $publicadoras = $this->model('Publicadoras');
+    if ($_SESSION['user_id'] == 1) {
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $publicadoras = $this->model('Publicadoras');
 
-      $novopublicadora=[
-        'nome' => $_POST['nome'],
-        'pais' => $_POST['pais']
-      ];
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  
+        $novopublicadora = [
+          'nome' => $_POST['nome'],
+          'pais' => $_POST['pais']
+        ];
+  
+        $info = $publicadoras::addPublicadora($novopublicadora);
+  
+        header("Location: /jogosapp/publicadora");
+        exit();
+      } else {
+  
+        $this->view('publicadora/create', ['publicadoras' => $publicadoras]);
+      }
 
-      $info = $publicadoras::addPublicadora($novopublicadora);
-
+    } else {
       header("Location: /jogosapp/publicadora");
-      exit();
-    }else{
-
-      $this->view('publicadora/create', ['publicadoras' => $publicadoras]);
     }
   }
 
 
   public function delete($id = null)
   {
-    if (is_numeric($id)) {
-      $publicadoras = $this->model('Publicadoras');
-      $data = $publicadoras::deletePublicadora($id);
-      header("Location: /jogosapp/publicadora");
-      exit();
+    if ($_SESSION['user_id'] == 1) {
+
+      if (is_numeric($id)) {
+        $publicadoras = $this->model('Publicadoras');
+        $data = $publicadoras::deletePublicadora($id);
+        header("Location: /jogosapp/publicadora");
+        exit();
+      } else {
+        $this->pageNotFound();
+      }
     } else {
-      $this->pageNotFound();
+      header("Location: /jogosapp/publicadora");
     }
   }
 }

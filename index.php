@@ -1,4 +1,5 @@
 <?php
+session_start();
   require './app/load.php';
   use app\core\App; // importação/aliasing com o operador use
                     // a instrução acima é igual a: use app\core\App as App;

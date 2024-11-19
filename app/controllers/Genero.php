@@ -28,6 +28,7 @@ class Genero extends Controller
    */
   public function get($id = null)
   {
+
     if (is_numeric($id)) {
       $Generos = $this->model('Generos');
       $Jogos = $this->model('Jogos');
@@ -42,6 +43,9 @@ class Genero extends Controller
 
   public function jogo($ids = null)
   {
+    //recebe o parametro em cima como "idJogo&idGenero"
+    // explode para separar a string pelo "&"
+    //recebe no array n aprimeira parte o id do jogo e na segunda parte o id do genero para passar para o botao
 
     $partes = explode("&", $ids);
     $idJogo = $partes[0];
@@ -62,34 +66,45 @@ class Genero extends Controller
 
   public function create()
   {
-    $Generos = $this->model('Generos');
+    if ($_SESSION['user_id'] == 1) {
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $Generos = $this->model('Generos');
 
-      $novoGenero = [
-        'nome' => $_POST['nome']
-      ];
+      //se receber um post entra no if, se não devolve a view de criar
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-      $info = $Generos::addGenero($novoGenero);
+        $novoGenero = [
+          'nome' => $_POST['nome']
+        ];
 
-      header("Location: /jogosapp/genero");
-      exit();
+        $Generos::addGenero($novoGenero);
+
+        header("Location: /jogosapp/genero");
+        exit();
+      } else {
+
+        $this->view('genero/create', ['generos' => $Generos]);
+      }
     } else {
-
-      $this->view('genero/create', ['generos' => $Generos]);
+      header("Location: /jogosapp/genero");
     }
   }
 
 
   public function delete($id = null)
   {
-    if (is_numeric($id)) {
-      $Generos = $this->model('Generos');
-      $data = $Generos::deleteGenero($id);
-      header("Location: /jogosapp/genero");
-      exit();
+    if ($_SESSION['user_id'] == 1) {
+
+      if (is_numeric($id)) {
+        $Generos = $this->model('Generos');
+        $data = $Generos::deleteGenero($id);
+        header("Location: /jogosapp/genero");
+        exit();
+      } else {
+        $this->pageNotFound();
+      }
     } else {
-      $this->pageNotFound();
+      header("Location: /jogosapp/genero");
     }
   }
 }

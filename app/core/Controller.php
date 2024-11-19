@@ -7,7 +7,10 @@ use app\models\Jogos;
 */
 class Controller {
 
+
   /**
+   * 
+   * 
   * Método para a invocação de um model.
   *
   * @param  string  $model   Model que será instanciado para usar numa view
