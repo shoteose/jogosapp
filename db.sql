@@ -66,12 +66,12 @@ INSERT INTO Genero (nome) VALUES
 ('Estratégia');
 
 -- Inserir dados na tabela Jogo
-INSERT INTO Jogo (nome, ano_lancamento, id_publicadora) VALUES
-('FIFA 2024', 2023, 1),   
-('Assassin\'s Creed Valhalla', 2020, 2),  
-('Monster Hunter World', 2018, 3), 
-('Final Fantasy XV', 2016, 4),  
-('The Legend of Zelda: Breath of the Wild', 2017, 5); 
+INSERT INTO Jogo (nome, ano_lancamento, id_publicadora, caminho_imagem) VALUES
+('FIFA 2024', 2023, 1,'fifa2024.png'),   
+('Assassin\'s Creed Valhalla', 2020, 2,'assassinscreedVahalla.png'),  
+('Monster Hunter World', 2018, 3,'monsterhunterworld.png'), 
+('Final Fantasy XV', 2016, 4,'finalfantasyXV.png'),  
+('The Legend of Zelda: Breath of the Wild', 2017, 5,'Legend_of_Zelda_Breath_of_the_Wild.png'); 
 
 -- Inserir dados na tabela Jogo_Genero (Relacionamento entre Jogos e Gêneros)
 INSERT INTO Jogo_Genero (id_jogo, id_genero) VALUES
