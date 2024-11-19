@@ -8,6 +8,12 @@ CREATE TABLE Publicadora (
     pais VARCHAR(255)
 );
 
+-- Tabela de Gêneros
+CREATE TABLE Genero (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL
+);
+
 -- Tabela de Jogos
 CREATE TABLE Jogo (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -18,11 +24,6 @@ CREATE TABLE Jogo (
     FOREIGN KEY (id_publicadora) REFERENCES Publicadora(id)
 );
 
--- Tabela de Gêneros
-CREATE TABLE Genero (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(255) NOT NULL
-);
 
 -- Tabela de Relacionamento entre Jogos e Gêneros (M:N)
 CREATE TABLE Jogo_Genero (
@@ -66,11 +67,11 @@ INSERT INTO Genero (nome) VALUES
 
 -- Inserir dados na tabela Jogo
 INSERT INTO Jogo (nome, ano_lancamento, id_publicadora) VALUES
-('FIFA 2024', 2023, 1),   -- Publicadora: Electronic Arts
-('Assassin\'s Creed Valhalla', 2020, 2),  -- Publicadora: Ubisoft
-('Monster Hunter World', 2018, 3), -- Publicadora: Capcom
-('Final Fantasy XV', 2016, 4),  -- Publicadora: Square Enix
-('The Legend of Zelda: Breath of the Wild', 2017, 5);  -- Publicadora: Nintendo
+('FIFA 2024', 2023, 1),   
+('Assassin\'s Creed Valhalla', 2020, 2),  
+('Monster Hunter World', 2018, 3), 
+('Final Fantasy XV', 2016, 4),  
+('The Legend of Zelda: Breath of the Wild', 2017, 5); 
 
 -- Inserir dados na tabela Jogo_Genero (Relacionamento entre Jogos e Gêneros)
 INSERT INTO Jogo_Genero (id_jogo, id_genero) VALUES

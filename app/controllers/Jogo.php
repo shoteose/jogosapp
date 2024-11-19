@@ -28,6 +28,7 @@ class Jogo extends Controller
     if (is_numeric($id)) {
       $Jogos = $this->model('Jogos');
       $data = $Jogos::findJogoById($id);
+
       $this->view('jogo/get', ['jogos' => $data]);
     } else {
       $this->pageNotFound();
@@ -95,6 +96,7 @@ class Jogo extends Controller
       header("Location: /jogosapp/jogo");
     }
   }
+
 
 
   public function update($id = null)

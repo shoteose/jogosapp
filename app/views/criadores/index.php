@@ -18,8 +18,8 @@
 
     <div id="textosBotao">
 
-      <div class="row">
-        <div class="col-12 ms-5 d-flex flex-column align-items-center">
+      <div class="row textosBotao">
+        <div class="col-12 d-flex flex-column align-items-center">
           <p>Paulo Novo nº25968 ECGM 3ºANO</p>
           <p>Hugo Diniz nº26824 ECGM 3ºANO</p>
           <a href="<?php echo $url_alias; ?>/" class="btn btn-md btn-custom mt-3">Voltar</a>

@@ -184,3 +184,24 @@ table {
    
 }
 
+@media (min-width: 577px) {
+#tituloIndex {
+  font-size: 4rem;
+  margin-right: 125px;
+}
+#tituloCriadores {
+  font-size: 4rem;
+}
+}
+/* Media queries para telas pequenas */
+@media (max-width: 576px) {
+  #tituloIndex, #tituloCriadores {
+    font-size: 2rem;
+    margin-right: 25px;
+  }
+
+  .btn-custom {
+    width: 100%; /* Botões ocupam a largura toda em telas pequenas */
+    font-size: 1rem;
+  }
+}

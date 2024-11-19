@@ -11,13 +11,7 @@ class Genero extends Controller
   {
     $Generos = $this->model('Generos'); // é retornado o model Generos()
     $data = $Generos::getAllGeneros();
-    /*
-    $Movies = new Movies();
-    $data = $Movies->getAllMovies();
-    ------------------------------------------------------
-    $Movies = "Movies";
-    $data = $Movies::getAllMovies();
-    */
+
     $this->view('genero/index', ['generos' => $data]);
   }
 
@@ -30,11 +24,14 @@ class Genero extends Controller
   {
 
     if (is_numeric($id)) {
+      // Carrega os modelos necessários
       $Generos = $this->model('Generos');
       $Jogos = $this->model('Jogos');
+
       $data = $Generos::findGeneroById($id);
       $jogos = $Jogos::getAllJogosByGeneroId($id);
-      // $data2 = $Jogos::getAllJogos();
+
+      // devolve a view get com os genero com esse id e os jogos associados a esse genero
       $this->view('genero/get', ['generos' => $data, 'jogos' => $jogos]);
     } else {
       $this->pageNotFound();
@@ -43,6 +40,7 @@ class Genero extends Controller
 
   public function jogo($ids = null)
   {
+
     //recebe o parametro em cima como "idJogo&idGenero"
     // explode para separar a string pelo "&"
     //recebe no array n aprimeira parte o id do jogo e na segunda parte o id do genero para passar para o botao
@@ -50,15 +48,14 @@ class Genero extends Controller
     $partes = explode("&", $ids);
     $idJogo = $partes[0];
     $idGenero = $partes[1];
-
+    // se ambos forem numericos
     if (is_numeric($idJogo) && is_numeric($idGenero)) {
       $Generos = $this->model('Generos');
       $Jogos = $this->model('Jogos');
 
-      $data = $Generos::findGeneroById($idGenero);
       $jogos = $Jogos::getJogoById($idJogo);
-
-      $this->view('genero/jogo', ['generos' => $data, 'jogos' => $jogos, 'idGenero' => $idGenero]);
+      //devolve a view com o jogo e o idgenero
+      $this->view('genero/jogo', ['jogos' => $jogos, 'idGenero' => $idGenero]);
     } else {
       $this->pageNotFound();
     }
@@ -70,8 +67,9 @@ class Genero extends Controller
 
       $Generos = $this->model('Generos');
 
-      //se receber um post entra no if, se não devolve a view de criar
-      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    //se receber um post entra no if, se não devolve a view de criar
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $novoGenero = [
           'nome' => $_POST['nome']
