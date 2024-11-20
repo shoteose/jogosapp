@@ -25,15 +25,16 @@
       </div>
 
       <div class="row mt-3" id="botoes">
-        <div class="col-12 col-md-6 col-lg-4 mb-3 d-flex flex-column align-items-center">
-          <a href="<?php echo $url_alias; ?>/contas" class="btn btn-md btn-custom">Login</a>
+        <div class="d-flex flex-column">
+          <a href="<?php echo $url_alias; ?>/contas" class="btn btn-md btn-custom mb-2">Login</a>
           <a href="<?php echo $url_alias; ?>/jogo" class="btn btn-md btn-custom mb-2">Ver Jogos</a>
           <a href="<?php echo $url_alias; ?>/genero" class="btn btn-md btn-custom mb-2">Ver Gêneros</a>
           <a href="<?php echo $url_alias; ?>/publicadora" class="btn btn-md btn-custom mb-2">Ver Publicadoras</a>
-          <a href="<?php echo $url_alias; ?>/criadores" class="btn btn-md btn-custom">Ver Criadores</a>
+          <a href="<?php echo $url_alias; ?>/criadores" class="btn btn-md btn-custom mb-2">Ver Criadores</a>
         </div>
       </div>
     </div>
+
 
     <!-- Scripts -->
     <script src="<?php echo $url_alias ?>/assets/js/scripts.js"></script>
@@ -72,12 +73,13 @@
       </div>
 
       <div class="row mt-3" id="botoes">
-        <div class="col-12 col-md-6 col-lg-4 mb-3 d-flex flex-column align-items-center">
-          <a href="<?php echo $url_alias; ?>/contas/logout" onclick="logout()" class="btn btn-md btn-custom">Logout</a>
+        <div class="d-flex flex-column">
+          <a href="<?php echo $url_alias; ?>/contas/logout" onclick="logout()" class="btn btn-md btn-custom mb-2">Logout</a>
           <a href="<?php echo $url_alias; ?>/jogo" class="btn btn-md btn-custom mb-2">Ver Jogos</a>
           <a href="<?php echo $url_alias; ?>/genero" class="btn btn-md btn-custom mb-2">Ver Gêneros</a>
           <a href="<?php echo $url_alias; ?>/publicadora" class="btn btn-md btn-custom mb-2">Ver Publicadoras</a>
-          <a href="<?php echo $url_alias; ?>/criadores" class="btn btn-md btn-custom">Ver Criadores</a>
+          <a href="<?php echo $url_alias; ?>/criadores" class="btn btn-md btn-custom mb-2">Ver Criadores</a>
+
         </div>
       </div>
     </div>
